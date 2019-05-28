@@ -1,0 +1,15 @@
+{
+  "name": "scut_questionaire",
+  "version": "1.0.0",
+  "description": "no",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "islider.js": "^2.2.5"
+  }
+}
