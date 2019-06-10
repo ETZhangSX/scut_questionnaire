@@ -19,7 +19,7 @@ function generateForm() {
         question_list.push({
             content: createQuestionItem(question_data[i])
         });
-    };
+    }
 
     question_list.push({
         content: (function () {
