@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("../resource/others/bg_stroke.jpg") top center no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+    /*position: relative;*/
+}
+
+.input_option {
+    margin: 0 0 0 0;
+}
+
+#index_title {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#index_title img {
+    display: block;
+    max-width: 100%;
+    position: fixed;
+}
+
+.options {
+    display: block;
+    left: 19.5%;
+    background: black;
+    max-width: 90%;
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+    width: 59%;
+    height: 11.5vw;
+    outline: none;
+}
+
+.options:active {
+    opacity: 0.2;
+    outline: none;
+}
+
+#btn1 {
+    top: 84vw;
+}
+
+#btn2 {
+    top: 101.5vw;
+}
+
+#btn3 {
+    top: 120vw;
+}
+
+#index_page {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#next_btn {
+    top: 120.5vw;
+    display: block;
+    margin: 5% 0 5% 0;
+    left: 57.5%;
+    background: black;
+    max-width: 90%;
+    position: absolute;
+    opacity: 0;
+    z-index: 4;
+    width: 31.5%;
+    height: 30.5vw;
+    outline: none;
+}
+
+#next_btn:active {
+    opacity: 0.2;
+    outline: none;
+}
+
+#question_form {
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+}

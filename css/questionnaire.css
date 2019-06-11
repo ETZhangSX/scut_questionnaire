@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("../resource/others/bg_stroke.jpg") top center no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+/*大门背景图片样式*/
+#background_door {
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    max-width: 100%;
+    position: fixed;
+}
+
+/*问题项容器样式*/
+.question_item {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/*图片样式*/
+.question_item img {
+    display: block;
+    max-width: 100%;
+    position: fixed;
+}
+
+/*
+TODO: 添加单选按钮的静态及点击样式
+ */
+
+#slide_next {
+    top: 162vw;
+}
+/*ul wrapper*/
+#iSlider-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+#iSlider-wrapper ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#iSlider-wrapper li {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    list-style: none;
+}
+
+#iSlider-wrapper li img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.question_content {
+    height: 100%;
+    width: 100%;
+    color: black;
+}
+
+.question_title {
+    height: 40%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.question_title p {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 60%;
+}
+
+.question_options {
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.option_line {
+    width: 70%;
+    margin: auto;
+    /*margin-top: 3%;*/
+    /*margin-bottom: 3%;*/
+}
+
+.question_options input {
+    width: 5%;
+    margin-left: 5%;
+}
+
+.question_options label {
+    font-size: 24px;
+    width: 80%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+.option_list {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    position: relative;
+    display: flex;
+}
+
+.option_list li {
+    height: 25%;
+    width: 100%;
+    color: black;
+    position: relative;
+    display: none;
+    list-style: circle;
+}

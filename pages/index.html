@@ -2,17 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>主页</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/index.css">
     <script src="../js/bootstrap.js"></script>
     <script src="../node_modules/islider.js"></script>
-
+    <script src="../js/index.js"></script>
 </head>
 <body>
-<div>
-    <button type="button" class="btn btn-primary btn-success btn-lg justify-content-xl-center">开始测试</button>
+<div id="index_title">
+    <img src="../resource/others/index_1.png" alt="#">
+    <img src="../resource/others/bg_door.png" alt="#" style="z-index: 1">
+    <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0">
+    <div id="img_btn">
+        <img src="../resource/others/index_2.png" alt="#">
+        <img src="../resource/others/index_btn1.png" alt="#" style="z-index: 2" onclick="choose_1()">
+        <img src="../resource/others/index_btn2.png" alt="#" style="z-index: 2" onclick="choose_2()">
+        <img src="../resource/others/index_btn3.png" alt="#" style="z-index: 2" onclick="choose_3()">
+
+        <button class="options" id="btn1" onclick="choose_num(1)"></button>
+        <button class="options" id="btn2" onclick="choose_num(2)"></button>
+        <button class="options" id="btn3" onclick="choose_num(3)"></button>
+    </div>
+
 </div>
+<!--<div>-->
+<!--    <form id="question_form"></form>-->
+<!--</div>-->
 
 </body>
 </html>
