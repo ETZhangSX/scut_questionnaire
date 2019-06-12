@@ -56,7 +56,7 @@ TODO: 添加单选按钮的静态及点击样式
 }
 
 #name-text {
-    font-size: x-large;
+    font-size: large;
     text-align: center;
     border-style: none;
     outline: none;
@@ -69,6 +69,23 @@ TODO: 添加单选按钮的静态及点击样式
     width: 80%;
     height: 15vw;
     top: 72vw;
+}
+
+#name-text::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #02468E;
+    opacity: 0.6;
+}
+#name-text:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #02468E;
+    opacity: 0.6;
+}
+#name-text::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #02468E;
+    opacity: 0.6;
+}
+#name-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #02468E;
+    opacity: 0.6;
 }
 
 .btn-submit {

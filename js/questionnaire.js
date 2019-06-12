@@ -187,6 +187,7 @@ function generateForm() {
             var btn_submit = document.createElement("input");
 
             text_name.id = "name-text";
+            text_name.placeholder = "您的名字";
             text_name.setAttribute("type", "text");
 
             btn_submit.className = "btn-submit";

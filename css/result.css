@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("../resource/others/bg_stroke.jpg") top center no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+#background_img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#background_img img {
+    display: block;
+    max-width: 100%;
+    position: fixed;
+}
+
+#user_name {
+    display: block;
+    color: white;
+    position: fixed;
+    left: 9.5%;
+    top: 11vw;
+    z-index: 2;
+}
+
+#bg_title {
+    top: -3.5vw;
+}
+
+#logo {
+    left: -26%;
+}
+
+#result_img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#result_img img {
+    display: block;
+    max-width: 100%;
+    position: fixed;
+}
+
+#school {
+
+}
+
+#personality_1 {
+    top: -28vw;
+}
+
+#personality_2 {
+
+}
