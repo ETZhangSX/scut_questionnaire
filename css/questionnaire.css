@@ -37,9 +37,64 @@ body {
 /*
 TODO: 添加单选按钮的静态及点击样式
  */
+.input_option {
+    display: none;
+}
+
+.input_label {
+    display: block;
+    position: absolute;
+    background: black;
+    opacity: 0;
+    z-index: 3;
+    outline: none;
+}
+
+.input_label:active {
+    opacity: 0.3;
+    outline: none;
+}
+
+#name-text {
+    font-size: x-large;
+    text-align: center;
+    border-style: none;
+    outline: none;
+    display: block;
+    left: 10%;
+    background: none;
+    max-width: 90%;
+    position: absolute;
+    z-index: 3;
+    width: 80%;
+    height: 15vw;
+    top: 72vw;
+}
+
+.btn-submit {
+    display: block;
+    left: 26%;
+    background: black;
+    max-width: 90%;
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+    width: 48%;
+    height: 15vw;
+    outline: none;
+    top: 112vw;
+}
+
+.btn-submit:active {
+    opacity: 0.2;
+}
+
+#3_a3 {
+    z-index: 0;
+}
 
 #slide_next {
-    top: 162vw;
+    top: 163vw;
 }
 /*ul wrapper*/
 #iSlider-wrapper {

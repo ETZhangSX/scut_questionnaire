@@ -1,27 +1,35 @@
 // 用于生成特定位置下的input标签，仅用于实验
 function generate_input(x, y, h, w, input_type, input_name, input_value) {
-    var container = document.createElement("div");
+    // var container = document.createElement("div");
     var choice = document.createElement("input");
 
-    container.className = "option_container";
+    // container.className = "option_container";
     choice.className = "input_option";
 
-    container.style.position = "absolute";
+    // container.style.position = "absolute";
 
     choice.setAttribute("type", input_type);
     choice.setAttribute("name", input_name);
     choice.setAttribute("value", input_value);
 
 
-    choice.style.display = "box";
+    choice.style.display = "block";
+    choice.style.position = "absolute";
+    choice.style.background = "black";
+    choice.style.zIndex = "3";
+    choice.style.top = x;
+    choice.style.left = y;
+    choice.style.height = h;
+    choice.style.width = w;
     // container.setAttribute("style", "float: left;");
-    container.style.marginLeft = x;
-    container.style.marginTop = y;
-    container.style.height = h;
-    container.style.width = w;
+    // container.style.top = x;
+    // container.style.left = y;
+    // container.style.height = h;
+    // container.style.width = w;
 
-    container.appendChild(choice);
-    return container;
+    // container.appendChild(choice);
+    // return container;
+    return choice;
 }
 // 同上
 function generate_question() {

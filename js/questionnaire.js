@@ -28,22 +28,22 @@ var question_data = [
         "bg_num" : 3,
         "options": [
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "140.5vw",
+                "y": "9%",
+                "height": "6vw",
+                "width": "82%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "149.75vw",
+                "y": "9%",
+                "height": "6vw",
+                "width": "82%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "159.25vw",
+                "y": "9%",
+                "height": "6vw",
+                "width": "82%"
             }
         ]
     },
@@ -53,22 +53,22 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "35vw",
+                "y": "10%",
+                "height": "37vw",
+                "width": "80%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "78vw",
+                "y": "10%",
+                "height": "37vw",
+                "width": "80%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "121vw",
+                "y": "10%",
+                "height": "37vw",
+                "width": "80%"
             }
         ]
     },
@@ -78,22 +78,22 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "54vw",
+                "y": "16.5%",
+                "height": "28vw",
+                "width": "33%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "68vw",
+                "y": "55%",
+                "height": "49vw",
+                "width": "33%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "120vw",
+                "y": "16.5%",
+                "height": "31vw",
+                "width": "36.5%"
             }
         ]
     },
@@ -103,22 +103,22 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "49vw",
+                "y": "10%",
+                "height": "32vw",
+                "width": "79%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "85vw",
+                "y": "10%",
+                "height": "32vw",
+                "width": "79%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "122vw",
+                "y": "10%",
+                "height": "32vw",
+                "width": "79%"
             }
         ]
     },
@@ -128,28 +128,28 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "40vw",
+                "y": "10%",
+                "height": "58vw",
+                "width": "38%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "40vw",
+                "y": "52%",
+                "height": "58vw",
+                "width": "38%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "102.5vw",
+                "y": "10%",
+                "height": "57.5vw",
+                "width": "38%"
             },
             {
-                "x": 0,
-                "y": 0,
-                "height": 0,
-                "width": 0
+                "x": "102.5vw",
+                "y": "52%",
+                "height": "57.5vw",
+                "width": "38%"
             }
         ]
     }
@@ -183,14 +183,51 @@ function generateForm() {
                 submit_page.appendChild(image);
             }
             // TODO: 生成用于提交表单的submit button，并append到此页面标签中
+            var text_name = document.createElement("input");
+            var btn_submit = document.createElement("input");
 
-            // var btn_submit = document.createElement("input");
-            // btn_submit.className = "btn-submit";
-            // btn_submit.setAttribute("type", "submit");
-            // btn_submit.setAttribute("value", "Submit");
+            text_name.id = "name-text";
+            text_name.setAttribute("type", "text");
+
+            btn_submit.className = "btn-submit";
+            btn_submit.setAttribute("type", "submit");
+            btn_submit.setAttribute("value", "Submit");
+
+            submit_page.appendChild(text_name);
+            submit_page.appendChild(btn_submit);
             return submit_page;
         }) ()
     });
+}
+
+// 创建指定位置的input标签
+function generate_input(x, y, h, w, input_type, input_name, input_value) {
+
+    //创建单选标签和label
+    var radio = document.createElement("input");
+    var choice = document.createElement("label");
+
+    radio.className = "input_option";
+    choice.className = "input_label";
+
+
+    radio.setAttribute("type", input_type);
+    radio.setAttribute("name", input_name);
+    radio.setAttribute("value", input_value);
+    radio.setAttribute("onchange", "radioChange(this)");
+
+    //绑定radio和label
+    var bind_id = input_name + "_" + input_value;
+    radio.id = bind_id;
+    choice.setAttribute("for", bind_id);
+
+    //设置label的位置
+    choice.style.top = x;
+    choice.style.left = y;
+    choice.style.height = h;
+    choice.style.width = w;
+
+    return [radio, choice];
 }
 
 // 用于生成单个问题项
@@ -216,16 +253,21 @@ function createQuestionItem(content) {
     }
 
     // 选项
-    for (var k in content.options) {
-        // var btn = content[k];
+    for (var k in content["options"]) {
+        var btn = content["options"][k];
         var btn_img = document.createElement("img");
         var id = content["id"].toString() + "_a" + (parseInt(k) + 1);
+        btn_img.className = "q" + content["id"] + "_img";
         btn_img.src = q_path + id + ".png";
         btn_img.alt = "#";
         btn_img.id = id;
 
         item.appendChild(btn_img);
-        // generate_input(btn["x"], btn["y"], btn["height"], btn["width"], "radio", content["id"], k);
+
+        //选项单选按钮
+        var option = generate_input(btn["x"], btn["y"], btn["height"], btn["width"], "radio", content["id"], parseInt(k) + 1);
+        item.appendChild(option[0]);
+        item.appendChild(option[1]);
     }
 
     // 滑动下一页图标
@@ -241,7 +283,7 @@ function createQuestionItem(content) {
 /*
 TODO: 添加单选按钮的选择点击逻辑，包括但不限于：
     -check给相应学院加减分;
-    -check改变相应选项图片的为点击样式, 即实现图片的切换, 可通过id操作
+    -[已完成]check改变相应选项图片的为点击样式, 即实现图片的切换, 可通过id操作
     （每个选项的img标签都有id，格式为 [题目编号]_a[选项编号], 例如: 1_a3);
     -uncheck需要回退上述所有操作;
     -在进行选择后, 需要显示滑动进入下一题图标[id: slide_next];
@@ -249,6 +291,25 @@ TODO: 添加单选按钮的选择点击逻辑，包括但不限于：
      不一次性push，而是每题第一次check再动态push下一页;
      或者无需重写，使用新list，每次check从一个list push到iSlider的容器list
  */
+
+
+function radioChange(obj) {
+    var q_name = obj.name;
+    var img_id = q_name + "_a" + obj.value;
+
+    console.log(img_id);
+
+    var images = document.getElementsByClassName("q" + q_name + "_img");
+    //遍历选项标签更改图标
+    for (var k in images) {
+        if (images[k].id == img_id) {
+            images[k].src = q_path + img_id + "0.png";
+        }
+        else {
+            images[k].src = q_path + q_name + "_a" + (parseInt(k) + 1) + ".png";
+        }
+    }
+}
 
 // 上个版本函数，重写版见前文
 // 生成问题项

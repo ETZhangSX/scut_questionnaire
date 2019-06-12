@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
     <title>结果页</title>
+    <style>
+        .radio {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+        .radio-label {
+            display: block;
+            left: 19.5%;
+            background: black;
+            max-width: 90%;
+            position: absolute;
+            opacity: 1;
+            z-index: 3;
+            width: 59%;
+            height: 11.5vw;
+            outline: none;
+        }
+    </style>
 </head>
 <body>
+<div class="radio">
+    <input id="radio-1" name="radio" type="radio" checked>
+    <label for="radio-1" class="radio-label"></label>
+</div>
 
+<div class="radio">
+    <input id="radio-2" name="radio" type="radio">
+    <label  for="radio-2" class="radio-label"></label>
+</div>
 </body>
 </html>
