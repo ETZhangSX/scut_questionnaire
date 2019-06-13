@@ -51,6 +51,8 @@ function generate_form() {
 //以上内容对主页没有任何实际意义hhhhhh
 /******************分割线**********8*******/
 
+var u = navigator.userAgent;
+
 // 选择选项隐藏主页并限制指定页面
 function choose_num(num) {
     var obj = document.getElementById("img_btn");

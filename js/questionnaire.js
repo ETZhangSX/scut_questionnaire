@@ -43,19 +43,19 @@ var question_data = [
         "bg_num" : 3,
         "options": [
             {
-                "x": "140.5vw",
+                "x": "29vw",
                 "y": "9%",
                 "height": "6vw",
                 "width": "82%"
             },
             {
-                "x": "149.75vw",
+                "x": "19.75vw",
                 "y": "9%",
                 "height": "6vw",
                 "width": "82%"
             },
             {
-                "x": "159.25vw",
+                "x": "10.3vw",
                 "y": "9%",
                 "height": "6vw",
                 "width": "82%"
@@ -68,19 +68,19 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "35vw",
+                "x": "103.8vw",
                 "y": "10%",
                 "height": "37vw",
                 "width": "80%"
             },
             {
-                "x": "78vw",
+                "x": "60.8vw",
                 "y": "10%",
                 "height": "37vw",
                 "width": "80%"
             },
             {
-                "x": "121vw",
+                "x": "17.8vw",
                 "y": "10%",
                 "height": "37vw",
                 "width": "80%"
@@ -93,19 +93,19 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "54vw",
+                "x": "93.5vw",
                 "y": "16.5%",
                 "height": "28vw",
                 "width": "33%"
             },
             {
-                "x": "68vw",
+                "x": "59.3vw",
                 "y": "55%",
                 "height": "49vw",
                 "width": "33%"
             },
             {
-                "x": "120vw",
+                "x": "24.5vw",
                 "y": "16.5%",
                 "height": "31vw",
                 "width": "36.5%"
@@ -118,19 +118,19 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "49vw",
+                "x": "95vw",
                 "y": "10%",
                 "height": "32vw",
                 "width": "79%"
             },
             {
-                "x": "85vw",
+                "x": "59vw",
                 "y": "10%",
                 "height": "32vw",
                 "width": "79%"
             },
             {
-                "x": "122vw",
+                "x": "22vw",
                 "y": "10%",
                 "height": "32vw",
                 "width": "79%"
@@ -143,25 +143,25 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "40vw",
+                "x": "77.5vw",
                 "y": "10%",
                 "height": "58vw",
                 "width": "38%"
             },
             {
-                "x": "40vw",
+                "x": "77.5vw",
                 "y": "52%",
                 "height": "58vw",
                 "width": "38%"
             },
             {
-                "x": "102.5vw",
+                "x": "15.5vw",
                 "y": "10%",
                 "height": "57.5vw",
                 "width": "38%"
             },
             {
-                "x": "102.5vw",
+                "x": "15.5vw",
                 "y": "52%",
                 "height": "57.5vw",
                 "width": "38%"
@@ -375,7 +375,7 @@ function generate_input(x, y, h, w, input_type, input_name, input_value) {
     choice.setAttribute("for", bind_id);
 
     //设置label的位置
-    choice.style.top = x;
+    choice.style.bottom = x;
     choice.style.left = y;
     choice.style.height = h;
     choice.style.width = w;
