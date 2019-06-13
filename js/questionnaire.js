@@ -3,6 +3,19 @@ function getQuestionnaire() {
 
 }
 
+// var content_width = window.screen.width;
+//
+// function loadWidth() {
+//     var container = document.getElementById("container_div");
+//     var d_w = window.screen.width;
+//     var d_h = window.screen.height;
+//     console.log(d_h);
+//     if (d_w/d_h >= 0.563) {
+//         content_width = (d_h * 9 / 16) + "px";
+//         container.style.width = content_width;
+//     }
+// }
+
 // 上个版本问题信息数据结构，下文使用新数据结构代替
 // var question_data = [
 //     {"id": 1, "type":"radio", "content": "你数学好吗？", "options":["非常好", "很好", "一般", "菜鸡"]},
@@ -13,7 +26,9 @@ function getQuestionnaire() {
 
 // 资源路径
 var q_path = "../resource/question/Q";
-
+var S;
+var index = 1;
+var isEnd = true;
 /*
 ** 用于存储问题信息
 ** id: 每个问题有唯一id
@@ -155,9 +170,143 @@ var question_data = [
     }
 ];
 
+var question_data_h = [
+    {
+        "id": 1,
+        "type":"radio",
+        "bg_num" : 3,
+        "options": [
+            {
+                "x": 1.405,
+                "y": "9%",
+                "height": 0.06,
+                "width": "82%"
+            },
+            {
+                "x": 1.4975,
+                "y": "9%",
+                "height": 0.06,
+                "width": "82%"
+            },
+            {
+                "x": 1.5925,
+                "y": "9%",
+                "height": 0.06,
+                "width": "82%"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "type":"radio",
+        "bg_num" : 0,
+        "options": [
+            {
+                "x": 0.35,
+                "y": "10%",
+                "height": 0.37,
+                "width": "80%"
+            },
+            {
+                "x": 0.78,
+                "y": "10%",
+                "height": 0.37,
+                "width": "80%"
+            },
+            {
+                "x": 0.121,
+                "y": "10%",
+                "height": 0.37,
+                "width": "80%"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "type":"radio",
+        "bg_num" : 0,
+        "options": [
+            {
+                "x": 0.54,
+                "y": "16.5%",
+                "height": 0.28,
+                "width": "33%"
+            },
+            {
+                "x": 0.68,
+                "y": "55%",
+                "height": 0.49,
+                "width": "33%"
+            },
+            {
+                "x": 1.20,
+                "y": "16.5%",
+                "height": 0.31,
+                "width": "36.5%"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "type":"radio",
+        "bg_num" : 0,
+        "options": [
+            {
+                "x": 0.49,
+                "y": "10%",
+                "height": 0.32,
+                "width": "79%"
+            },
+            {
+                "x": 0.85,
+                "y": "10%",
+                "height": 0.32,
+                "width": "79%"
+            },
+            {
+                "x": 1.22,
+                "y": "10%",
+                "height": 0.32,
+                "width": "79%"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "type":"radio",
+        "bg_num" : 0,
+        "options": [
+            {
+                "x": 0.40,
+                "y": "10%",
+                "height": 0.58,
+                "width": "38%"
+            },
+            {
+                "x": 0.40,
+                "y": "52%",
+                "height": 0.58,
+                "width": "38%"
+            },
+            {
+                "x": 1.025,
+                "y": "10%",
+                "height": 0.575,
+                "width": "38%"
+            },
+            {
+                "x": 1.025,
+                "y": "52%",
+                "height": 0.575,
+                "width": "38%"
+            }
+        ]
+    }
+];
+
 // 滑动列表，即存储滑动效果主题内容，任何push进去的内容会显示在滑动窗口
 var question_list = [];
-
+var list = [];
 // 根据题目数据写HTML，将document push到list中
 function generateForm() {
 
@@ -182,17 +331,20 @@ function generateForm() {
                 image.alt = "#";
                 submit_page.appendChild(image);
             }
-            // TODO: 生成用于提交表单的submit button，并append到此页面标签中
+
             var text_name = document.createElement("input");
             var btn_submit = document.createElement("input");
 
             text_name.id = "name-text";
             text_name.placeholder = "您的名字";
             text_name.setAttribute("type", "text");
+            text_name.required = true;
+            text_name.setAttribute("oninvalid", "setCustomValidity('请输入您的姓名')");
 
-            btn_submit.className = "btn-submit";
+            btn_submit.id = "btn-submit";
             btn_submit.setAttribute("type", "submit");
             btn_submit.setAttribute("value", "Submit");
+            btn_submit.setAttribute("onsubmit", "submitForm()");
 
             submit_page.appendChild(text_name);
             submit_page.appendChild(btn_submit);
@@ -232,7 +384,6 @@ function generate_input(x, y, h, w, input_type, input_name, input_value) {
 }
 
 // 用于生成单个问题项
-// TODO: 根据题目信息中的选项信息生成对应单选按钮，要求按钮透明，和题目选项图片对应
 function createQuestionItem(content) {
     var item = document.createElement("div");
     item.className = "question_item";
@@ -271,14 +422,41 @@ function createQuestionItem(content) {
         item.appendChild(option[1]);
     }
 
-    // 滑动下一页图标
-    var slide_page = document.createElement("img");
-    slide_page.id = "slide_next";
-    slide_page.src = "../resource/others/bg_next.png";
-    slide_page.alt = "#";
-    item.appendChild(slide_page);
-
     return item;
+}
+
+// 隐藏滑动提示图标
+function hideNext() {
+    console.log("hideNext()");
+    var slide_next = document.getElementById("slide_next");
+    hide(slide_next, 0.05);
+}
+
+// 显示滑动提示图标
+function showNext() {
+    console.log("showNext()");
+    var slide_next = document.getElementById("slide_next");
+    show(slide_next, 0.05);
+}
+
+
+// 渐变隐藏标签，即设置透明度线性下降为0
+function hide(el, offset){
+    var opacity = el.style.opacity || 1;
+
+    setTimeout(function() {
+        el.style.opacity = String(parseFloat(opacity) - offset);
+        parseFloat(el.style.opacity) > 0 && hide(el, offset);
+    }, 10);
+}
+
+// 渐变展示标签，即设置透明度线性增加为1
+function show(el, offset){
+    var opacity = el.style.opacity || 0;
+    setTimeout(function() {
+        el.style.opacity = String(parseFloat(opacity) + offset);
+        parseFloat(el.style.opacity) < 1 && show(el, offset);
+    }, 10);
 }
 
 /*
@@ -287,8 +465,8 @@ TODO: 添加单选按钮的选择点击逻辑，包括但不限于：
     -[已完成]check改变相应选项图片的为点击样式, 即实现图片的切换, 可通过id操作
     （每个选项的img标签都有id，格式为 [题目编号]_a[选项编号], 例如: 1_a3);
     -uncheck需要回退上述所有操作;
-    -在进行选择后, 需要显示滑动进入下一题图标[id: slide_next];
-    -进行选择后才可滑动到下一题, 暂时想到的可行方案是重写generateForm()函数
+    -[已完成]在进行选择后, 需要显示滑动进入下一题图标[id: slide_next];
+    -[已完成]进行选择后才可滑动到下一题, 暂时想到的可行方案是重写generateForm()函数
      不一次性push，而是每题第一次check再动态push下一页;
      或者无需重写，使用新list，每次check从一个list push到iSlider的容器list
  */
@@ -301,6 +479,7 @@ function radioChange(obj) {
     console.log(img_id);
 
     var images = document.getElementsByClassName("q" + q_name + "_img");
+
     //遍历选项标签更改图标
     for (var k in images) {
         if (images[k].id == img_id) {
@@ -310,6 +489,24 @@ function radioChange(obj) {
             images[k].src = q_path + q_name + "_a" + (parseInt(k) + 1) + ".png";
         }
     }
+
+    // 判断是否在最后一页，动态添加题目数据
+    if (isEnd && index < question_list.length) {
+        S.pushData(question_list[index]);
+        index++;
+        isEnd = false;
+        showNext();
+    }
+    // S.unhold();
+}
+
+/*
+TODO: 实现表单提交函数逻辑，包括：
+    - 校验表单数据格式，是否为空（由于采用了必须答题才能滑动，只需校验名字是否合法）
+    - 若问卷结果逻辑在前端实现，则应在该函数中实现结果逻辑
+    - 将结果传递到结果页
+ */
+function submitForm() {
 }
 
 // 上个版本函数，重写版见前文

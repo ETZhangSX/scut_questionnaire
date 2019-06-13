@@ -15,18 +15,36 @@
     <script src="../node_modules/islider.js/build/iSlider.animate.js"></script>
 </head>
 <body>
-
 <img src="../resource/others/bg_door.png" alt="#" id="background_door">
+<img src="../resource/others/bg_next.png" alt="#" id="slide_next" style="opacity: 0;">
 <form action="result.html">
     <div id="iSlider-wrapper"></div>
 </form>
 <script id="show-code">
     generateForm();
-    var S = new iSlider(document.getElementById('iSlider-wrapper'), question_list, {
+    list.push(question_list[0]);
+
+    /*
+    * 添加回调事件
+    * onSlide：滑动屏幕触发事件hideNext，隐藏滑动下一页图标
+    * onSlideChanged：页面改变时触发，更新isEnd并根据isEnd决定调用showNext
+    * onSlideRestored：页面未发生改变时触发，即改变未成功(回弹)
+    */
+    S = new iSlider(document.getElementById('iSlider-wrapper'), list, {
         isLooping: 0,
         isOverspread: 1,
         animateTime: 800,
         animateType: 'default',
+        onSlide: hideNext,
+        onSlideChanged: function (idx) {
+            isEnd = (idx === this.data.length - 1);
+            console.log(isEnd);
+            if (!isEnd) showNext();
+            // this.hold();
+        },
+        onSlideRestored: function () {
+            if (!isEnd) showNext();
+        },
         isVertical: true
     });
 </script>

@@ -86,7 +86,7 @@ function choose_num(num) {
 }
 
 // 渐变隐藏标签，即设置透明度线性下降为0
-function hide(el,offset){
+function hide(el, offset){
     var opacity = el.style.opacity || 1;
 
     setTimeout(function() {
@@ -96,7 +96,7 @@ function hide(el,offset){
 }
 
 // 渐变展示标签，即设置透明度线性增加为1
-function show(el,offset){
+function show(el, offset){
     var opacity = el.style.opacity || 0;
     setTimeout(function() {
         el.style.opacity = String(parseFloat(opacity) + offset);
