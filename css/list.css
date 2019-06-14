@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("../resource/others/bg_stroke.jpg") top center no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+#logo {
+    left: 30%;
+}
+
+.background_img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.background_img img {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.departments {
+    width: 100%;
+}
+
+.department_list {
+    width: 20%;
+    margin: 7% 7%;
+    float: left;
+}
+
+.department_item {
+    height: 5%;
+    padding-bottom: 2vw;
+}
+
+.department_img {
+    height: 7vw;
+}
+
