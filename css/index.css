@@ -23,6 +23,7 @@ body {
     display: block;
     max-width: 100%;
     position: fixed;
+    bottom: 0;
 }
 
 .options {
@@ -44,15 +45,15 @@ body {
 }
 
 #btn1 {
-    top: 84vw;
+    bottom: 82.5vw;
 }
 
 #btn2 {
-    top: 101.5vw;
+    bottom: 65vw;
 }
 
 #btn3 {
-    top: 120vw;
+    bottom: 46.5vw;
 }
 
 #index_page {
@@ -64,9 +65,8 @@ body {
 }
 
 #next_btn {
-    top: 120.5vw;
+    bottom: 21.5vw;
     display: block;
-    margin: 5% 0 5% 0;
     left: 57.5%;
     background: black;
     max-width: 90%;
@@ -81,12 +81,4 @@ body {
 #next_btn:active {
     opacity: 0.2;
     outline: none;
-}
-
-#question_form {
-    width: 100%;
-    position: absolute;
-    top: 50px;
-    bottom: 0;
-    left: 0;
 }

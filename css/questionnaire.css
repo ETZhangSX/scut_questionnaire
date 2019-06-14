@@ -10,7 +10,6 @@ body {
 /*大门背景图片样式*/
 #background_door {
     width: 100%;
-    top: 0;
     bottom: 0;
     left: 0;
     display: block;
@@ -32,6 +31,7 @@ body {
     display: block;
     max-width: 100%;
     position: fixed;
+    bottom: 0;
 }
 
 /*单选按钮及其绑定标签样式*/
@@ -67,7 +67,7 @@ body {
     z-index: 3;
     width: 80%;
     height: 15vw;
-    top: 72vw;
+    bottom: 90vw;
 }
 
 /*填充字样式*/
@@ -100,15 +100,11 @@ body {
     width: 48%;
     height: 15vw;
     outline: none;
-    top: 112vw;
+    bottom: 51.5vw;
 }
 
 #btn-submit:active {
     opacity: 0.2;
-}
-
-#3_a3 {
-    z-index: 0;
 }
 
 /*滑动下一页提示图标*/
@@ -116,7 +112,7 @@ body {
     display: block;
     max-width: 100%;
     position: fixed;
-    top: 163vw;
+    bottom: 4vw;
 }
 
 

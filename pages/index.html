@@ -26,6 +26,40 @@
         <button class="options" id="btn3" onclick="choose_num(3)"></button>
     </div>
 </div>
+<script>
+    console.log(u);
+    if (u.indexOf('Android') <= -1 && u.indexOf("iPhone") <= -1 && u.indexOf('Windows Phone') <= -1) {
+        document.getElementById("index_title").style.display = "none";
+        var agent_name;
+        if (u.indexOf('iPad') > -1) {
+            agent_name = "iPad";
+        }
+        else if (u.indexOf('Windows') > -1) {
+            agent_name = "Windows";
+        }
+        else if (u.indexOf('Macintosh') > -1) {
+            agent_name = "Mac OS X";
+        }
+        else {
+            agent_name = "未知设备";
+        }
+        var wrong_d = document.createElement("div");
+        var label = document.createElement("label");
 
+        wrong_d.id = "wrong_msg";
+        wrong_d.style.width = "100%";
+        wrong_d.style.height = "100vh";
+        wrong_d.style.padding = "auto";
+        label.innerHTML = "您正在使用" + agent_name + "进行浏览<br>请换用手机设备";
+        label.style.textAlign = "center";
+        label.style.display = "block";
+        label.style.position = "absolute";
+        label.style.fontSize = "2em";
+        label.style.left = "32%";
+        label.style.top = "30%";
+        wrong_d.appendChild(label);
+        document.body.appendChild(wrong_d);
+    }
+</script>
 </body>
 </html>
