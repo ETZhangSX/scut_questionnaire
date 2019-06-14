@@ -35,6 +35,21 @@
 |**27.医学院**|School of Medicine|MEDIC|
 |**28.艺术学院**|School of Art|ART|
 |**29.自动化科学与工程学院**|School of Automation Science and Engineering|AUTOSE|
-
+||||
 |**吴贤铭智能工程学院**|Shien-Ming Wu School of Intelligent Engineering|SMWIE|
 |**分子科学与工程学院**|School of Molecular and Engineering|MOLECUL|
+
+人格编号
+
+| 类型   | 编号 |
+| ------ | ---- |
+| 观察型 | 1    |
+| 浪漫型 | 2    |
+| 实干型 | 3    |
+| 挑战型 | 4    |
+| 调停型 | 5    |
+| 完美型 | 6    |
+| 享乐型 | 7    |
+| 忠诚型 | 8    |
+| 助人型 | 9    |
+

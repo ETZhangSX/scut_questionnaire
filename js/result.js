@@ -1,5 +1,5 @@
-var school_img_path = "../resource/result/department/8-";
-var personality_img_path = "../resource/result/personality/8-";
+var school_img_path = "../resource/result/department/";
+var personality_img_path = "../resource/result/personality/";
 
 function loadResultInfo(userName, schoolName, personalityName_1, personalityName_2) {
     var name = document.getElementById("user_name");
