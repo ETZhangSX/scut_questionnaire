@@ -30,15 +30,21 @@ body {
     width: 100%;
 }
 
-.department_list {
-    width: 20%;
-    margin: 7% 7%;
-    float: left;
+.department_right {
+    left: 50%;
+    bottom: 29.5vw;
+    position: absolute;
+}
+
+.department_left {
+    left: 5%;
+    bottom: 20vw;
+    position: absolute;
 }
 
 .department_item {
     height: 5%;
-    padding-bottom: 2vw;
+    padding-bottom: 2.5vw;
 }
 
 .department_img {
