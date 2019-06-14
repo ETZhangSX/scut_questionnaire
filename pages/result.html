@@ -11,21 +11,23 @@
     <script src="../js/result.js"></script>
 </head>
 <body>
-<div id="background_img">
+<div class="background_img">
     <h4 id="user_name">
         您的名字
     </h4>
+    <button id="school_btn" onclick="window.location.href='detail.html'"></button>
     <img src="../resource/result/bg_1.png" alt="#" id="bg_title">
     <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0">
     <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo">
     <img src="../resource/result/bg_2.png" alt="#">
-    <img src="../resource/result/bg_3.png" alt="#">
+    <img src="../resource/others/qrcode_text.png" alt="#">
+    <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode">
 </div>
 
-<div id="result_img">
+<div class="result" id="result_img">
 </div>
 <script>
-    loadResultInfo("CJJ", "CS", "1", "2");
+    loadResultInfo("陈嘉健", "CS", "1", "2");
 </script>
 </body>
 </html>
