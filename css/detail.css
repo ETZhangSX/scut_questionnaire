@@ -9,43 +9,34 @@ body {
 
 .background_img {
     width: 100%;
-    position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
+    bottom: 0;
+    position: absolute;
 }
 
 .background_img img {
     display: block;
-    width: 100%;
     position: fixed;
+    max-width: 100%;
     bottom: 0;
 }
 
-#school_btn {
+#school_list {
+    border-radius: 1.5vw;
     display: block;
     position: absolute;
     background: black;
-    opacity: 0;
+    opacity: 0.6;
     z-index: 3;
     outline: none;
-    width: 25%;
-    height: 40vw;
-    right: 8%;
-    bottom: 128vw;
+    width: 71.75%;
+    height: 10vw;
+    left: 16.3%;
 }
 
-#user_name {
-    display: block;
-    color: white;
-    position: fixed;
-    left: 9.5%;
-    bottom: 157vw;
-    z-index: 2;
-}
-
-#bg_title {
-    bottom: 5.5vw;
+#school_list:active {
+    opacity: 0.3;
 }
 
 #logo {
@@ -58,27 +49,10 @@ body {
     width: 17%;
 }
 
-.result {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-}
-
-.result img {
+#school_detail img {
     display: block;
-    width: 100%;
     position: fixed;
+    max-width: 100%;
     bottom: 0;
 }
 
-#school {
-}
-
-#personality_1 {
-    bottom: 28vw;
-}
-
-#personality_2 {
-}

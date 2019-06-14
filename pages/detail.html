@@ -1,125 +1,72 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">-->
-<!--    <title>详情页</title>-->
-<!--</head>-->
-<!--<body>-->
-
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
-    <title>iSlider more animation</title>
-    <link href="../node_modules/islider.js/build/iSlider.css" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #333;
-            overflow: hidden;
-        }
-
-        /*ul wrapper*/
-        #iSlider-wrapper {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            position: absolute;
-        }
-
-        #iSlider-wrapper ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        #iSlider-wrapper li {
-            position: absolute;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-pack: center;
-            -webkit-box-align: center;
-            list-style: none;
-        }
-
-        #iSlider-wrapper li img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-    </style>
-
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no"/>
+    <title>详情页</title>
+    <link href="../css/detail.css" rel="stylesheet">
 </head>
 <body>
-<div id="iSlider-wrapper"></div>
-<div id="hidden-space" style="display:none">
-    <p style="font-size:3em;text-align: center;color:#04f512">A node in dom tree.</p>
+<div class="background_img">
+    <img src="../resource/others/bg_door.png" alt="#">
+    <img src="../resource/others/qrcode_text.png" alt="#">
+    <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode">
+    <img src="../resource/others/bg_scut.png" alt="#" id="logo">
+    <button id="school_list" onclick="window.location.href='#'" ></button>
 </div>
-<script type="text/javascript" src="../node_modules/islider.js/build/iSlider.js"></script>
-<script type="text/javascript" src="../node_modules/islider.js/build/iSlider.animate.js"></script>
+<div id="school_detail"></div>
 <script id="show-code">
-    var list = [
-        // picture
-        {
-            content: './imgs/pic.jpg'
-        },
-        // HTML String
-        {
-            content: '<div style="font-size:4em;color:white;text-align: center">HTML String</div>'
-        },
-        // element
-        {
-            content: (function () {
-                var dom = document.createElement('div');
-                dom.innerHTML = 'Element';
-                dom.style.cssText = 'font-size:3em;color:rgb(230, 230, 63);';
-                return dom;
-            })()
-        },
-        // fragment
-        {
-            content: (function () {
-                var frag = document.createDocumentFragment();
-                var img = new Image()
-                var dom = document.createElement('div');
-                dom.innerHTML = 'Fragment';
-                dom.style.cssText = 'font-size:3em;color:rgb(230, 63, 230);';
-                frag.appendChild(dom);
-                return frag;
-            })()
-        },
-        // dom
-        {
-            content: document.querySelector('#hidden-space > p')
-        },
-        // iframe
-        {
-            content: '' +
-                '<div style="padding-top:.2em;font-size:3em;color:rgb(230, 63, 230);position:absolute;top:0;left:0;height:100%;width:100%;z-index:1">' +
-                '<span style="padding:.2em;background-color:black;">Iframe</span>' +
-                '</div>' +
-                '<iframe style="position:relative;z-index:0;height:100%;" src="http://mobile.baidu.com"></iframe>'
-        }
-    ];
+    var button_high_of = {
+        "ARCH": "34.5vw",
+        "ART": "38.5vw",
+        "AUTOSE": "28vw",
+        "BADMIN": "26.8vw",
+        "BBE": "27.5vw",
+        "BIO": "35vw",
+        "CCE": "33.7vw",
+        "CIVIL": "29.7vw",
+        "CS": "38.25vw",
+        "DESIGN": "38vw",
+        "ECO": "32.8vw",
+        "EIE": "30vw",
+        "ENVIR": "30.2vw",
+        "EP": "28.6vw",
+        "FL": "30.2vw",
+        "FOOD": "32.6vw",
+        "INTERE": "34vw",
+        "JC": "29.4vw",
+        "LAW": "32.4vw",
+        "LIE": "36.8vw",
+        "MAE": "34.5vw",
+        "MARXISM": "35.2vw",
+        "MATH": "27.5vw",
+        "MEDIC": "38.5vw",
+        "MSE": "38.2vw",
+        "PADMIN": "31vw",
+        "PHY": "28.1vw",
+        "PHYE": "38.8vw",
+        "SOFTE": "32.5vw",
+    }
+    function loadDetailInfo(schoolName) {
+        var file_path = "../resource/intro/" + schoolName;
+        var bottom = button_high_of[schoolName];
+        document.getElementById("school_list").style.bottom = bottom;
+        var title = document.createElement("img");
+        var text = document.createElement("img");
 
-    var S = new iSlider(document.getElementById('iSlider-wrapper'), list, {
-        isLooping: 1,
-        isOverspread: 1,
-        isAutoplay: 1,
-        animateTime: 800,
-        animateType: 'rotate'
-    });
+        title.src = file_path + "-1.png";
+        text.src = file_path + "-2.png";
+        title.alt = "#";
+        text.alt = "#";
+        title.id = "title";
+        text.id = "text";
+
+        var container = document.getElementById("school_detail");
+        container.appendChild(title);
+        container.appendChild(text);
+    }
+    loadDetailInfo("CS");
 </script>
 </body>
 </html>
