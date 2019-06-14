@@ -1,5 +1,30 @@
 var school_img_path = "../resource/result/department/";
 var personality_img_path = "../resource/result/personality/";
+var result_path = "../resource/result/result.txt";
+
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+        return unescape(decodeURI(r[2]));
+    return null;
+}
+
+function load(name) {
+    let xhr = new XMLHttpRequest(),
+        okStatus = document.location.protocol === "file:" ? 0 : 200;
+    xhr.open('GET', name, false);
+    xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
+    xhr.send(null);
+    return xhr.status === okStatus ? xhr.responseText : null;
+}
+
+function getResultRelation() {
+    let fp = load(result_path);
+    var result_judge = JSON.parse(fp);
+    console.log(result_judge);
+    return result_judge;
+}
 
 function loadResultInfo(userName, schoolName, personalityName_1, personalityName_2) {
     var name = document.getElementById("user_name");

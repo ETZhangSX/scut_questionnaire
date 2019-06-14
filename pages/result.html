@@ -27,7 +27,19 @@
 <div class="result" id="result_img">
 </div>
 <script>
-    loadResultInfo("陈嘉健", "CS", "1", "2");
+    var name = getUrlParam("name");
+    var user_answer = getUrlParam("user_answer");
+    console.log(name);
+    console.log(user_answer);
+    if (name != null && user_answer != null) {
+        var resultMap = getResultRelation();
+        if (resultMap.hasOwnProperty(user_answer)) {
+            var result = resultMap[user_answer];
+            loadResultInfo(name, result["depart"], result["first"], result["second"]);
+            document.getElementById("school_btn").setAttribute("onclick", "window.location.href='detail.html?school=" + result["depart"] + "'")
+        }
+        else loadResultInfo("不存在对应学院", "CS", "1", "2");
+    }
 </script>
 </body>
 </html>

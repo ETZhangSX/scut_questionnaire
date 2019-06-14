@@ -47,7 +47,16 @@
         "PHY": "28.1vw",
         "PHYE": "38.8vw",
         "SOFTE": "32.5vw",
+    };
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
     }
+
     function loadDetailInfo(schoolName) {
         var file_path = "../resource/intro/" + schoolName;
         var bottom = button_high_of[schoolName];
@@ -66,7 +75,9 @@
         container.appendChild(title);
         container.appendChild(text);
     }
-    loadDetailInfo("CS");
+
+    var school = getUrlParam("school");
+    loadDetailInfo(school);
 </script>
 </body>
 </html>

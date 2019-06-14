@@ -13,7 +13,6 @@ body {
     bottom: 0;
     left: 0;
     display: block;
-    max-width: 100%;
     position: fixed;
 }
 
@@ -29,7 +28,7 @@ body {
 /*图片样式*/
 .question_item img {
     display: block;
-    max-width: 100%;
+    width: 100%;
     position: fixed;
     bottom: 0;
 }
@@ -112,7 +111,7 @@ body {
     display: block;
     max-width: 100%;
     position: fixed;
-    bottom: 4vw;
+    bottom: 3.5vw;
 }
 
 

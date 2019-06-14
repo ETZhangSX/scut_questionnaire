@@ -5,9 +5,10 @@ function getQuestionnaire() {
 
 // 资源路径
 var q_path = "../resource/question/Q";
-var S;
-var index = 1;
-var isEnd = true;
+var S;                                  // iSlider实例
+var index = 1;                          // 页面计数器，值为最后一页
+var isEnd = true;                       // 是否在最后一题
+
 /*
 ** 用于存储问题信息
 ** id: 每个问题有唯一id
@@ -148,10 +149,14 @@ var question_data = [
         ]
     }
 ];
+var user_selection = {};
+
 
 // 滑动列表，即存储滑动效果主题内容，任何push进去的内容会显示在滑动窗口
 var question_list = [];
 var list = [];
+
+
 // 根据题目数据写HTML，将document push到list中
 function generateForm() {
 
@@ -185,11 +190,12 @@ function generateForm() {
             text_name.setAttribute("type", "text");
             text_name.required = true;
             text_name.setAttribute("oninvalid", "setCustomValidity('请输入您的姓名')");
+            text_name.setAttribute("oninput", "setCustomValidity('')");
 
             btn_submit.id = "btn-submit";
             btn_submit.setAttribute("type", "submit");
             btn_submit.setAttribute("value", "Submit");
-            btn_submit.setAttribute("onsubmit", "submitForm()");
+            btn_submit.setAttribute("onclick", "submitForm()");
 
             submit_page.appendChild(text_name);
             submit_page.appendChild(btn_submit);
@@ -228,11 +234,14 @@ function generate_input(x, y, h, w, input_type, input_name, input_value) {
     return [radio, choice];
 }
 
+
 // 用于生成单个问题项
 function createQuestionItem(content) {
     var item = document.createElement("div");
     item.className = "question_item";
 
+    // 添加题目用户作答json数据
+    user_selection[content["id"].toString()] = "0";
     // 题目
     var question_title = document.createElement("img");
     question_title.src = q_path + content["id"] + ".png";
@@ -323,6 +332,10 @@ function radioChange(obj) {
 
     console.log(img_id);
 
+    // 更新用户答案
+    user_selection[q_name] = obj.value;
+    // console.log(user_selection);
+
     var images = document.getElementsByClassName("q" + q_name + "_img");
 
     //遍历选项标签更改图标
@@ -342,7 +355,6 @@ function radioChange(obj) {
         isEnd = false;
         showNext();
     }
-    // S.unhold();
 }
 
 /*
@@ -351,53 +363,29 @@ TODO: 实现表单提交函数逻辑，包括：
     - 若问卷结果逻辑在前端实现，则应在该函数中实现结果逻辑
     - 将结果传递到结果页
  */
+
+// 提交按键逻辑，传递参数到结果页
 function submitForm() {
+    var user_answer = "";
+    for (var i = 1; i < question_list.length; i++) {
+        user_answer += user_selection[i];
+    }
+    console.log(user_answer);
+    var name = document.getElementById("name-text").value;
+    console.log(name);
+    // 使用encodeURI编码，用于解决中文传参乱码的问题
+    url = "result.html?name=" + encodeURI(name) + "&user_answer=" + user_answer;
+    console.log(url);
+    // sleep(3000);
+    document.getElementById("form").setAttribute("action", url);
 }
 
-// 上个版本函数，重写版见前文
-// 生成问题项
-// function createQuestionItem(content) {
-//     var item = document.createElement("div");
-//     var title = document.createElement("div");
-//     var options = document.createElement("div");
-//     var title_text = document.createElement("p");
-//     // var option_ul = document.createElement("ul");
-//
-//     item.setAttribute("id", content.id);
-//
-//     item.className = "question_content";
-//     title.className = "question_title";
-//     options.className = "question_options";
-//     // option_ul.className = "option_list";
-//
-//     title_text.innerHTML = content.content;
-//     title.appendChild(title_text);
-//     item.appendChild(title);
-//
-//     for (var k in content.options) {
-//         // var li_c = document.createElement("li");
-//         var option_line = document.createElement("div");
-//         var ratio_input = document.createElement("input");
-//         var input_label = document.createElement("label");
-//         var br = document.createElement("br");
-//
-//         option_line.className = "option_line";
-//
-//         ratio_input.setAttribute("type", content.type);
-//         ratio_input.setAttribute("name", content.id);
-//         ratio_input.setAttribute("value", k);
-//
-//         input_label.innerHTML = content.options[k];
-//
-//         // li_c.appendChild(ratio_input);
-//         // option_ul.appendChild(li_c);
-//         option_line.appendChild(ratio_input);
-//         option_line.appendChild(input_label);
-//         options.appendChild(option_line);
-//         options.appendChild(br);
-//     }
-//
-//     // options.appendChild(option_ul);
-//     item.appendChild(options);
-//     return item;
-// }
+function sleep(numberMillis) {
+    var now = new Date();
+    var exitTime = now.getTime() + numberMillis;
+    while (true) {
+        now = new Date();
+        if (now.getTime() > exitTime)
+            return;
+    }
+}
