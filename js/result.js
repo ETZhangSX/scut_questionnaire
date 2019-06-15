@@ -2,6 +2,7 @@ var school_img_path = "../resource/result/department/";
 var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
 
+// 获取传入参数
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
@@ -10,6 +11,7 @@ function getUrlParam(name) {
     return null;
 }
 
+// 加载文件
 function load(name) {
     let xhr = new XMLHttpRequest(),
         okStatus = document.location.protocol === "file:" ? 0 : 200;

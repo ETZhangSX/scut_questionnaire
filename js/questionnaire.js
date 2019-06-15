@@ -8,6 +8,14 @@ var q_path = "../resource/question/Q";
 var S;                                  // iSlider实例
 var index = 1;                          // 页面计数器，值为最后一页
 var isEnd = true;                       // 是否在最后一题
+var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+
+function getScreenRation() {
+    var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
+    console.log(ratio);
+    if (ratio < (16 / 9)) isLongScreen = false;
+    console.log(isLongScreen);
+}
 
 /*
 ** 用于存储问题信息
@@ -16,6 +24,11 @@ var isEnd = true;                       // 是否在最后一题
 ** bg_num: 背景图片数量，现只有问题一有
 ** options: 存储选项信息，每个选项按钮的坐标和宽高
 **/
+var x_unit = "vw";
+var y_unit = "%";
+var h_unit = "vw";
+var w_unit = "%";
+
 var question_data = [
     {
         "id": 1,
@@ -23,22 +36,22 @@ var question_data = [
         "bg_num" : 3,
         "options": [
             {
-                "x": "29vw",
-                "y": "9%",
-                "height": "6vw",
-                "width": "82%"
+                "x": 29,
+                "y": 9,
+                "height": 6,
+                "width": 82
             },
             {
-                "x": "19.75vw",
-                "y": "9%",
-                "height": "6vw",
-                "width": "82%"
+                "x": 19.75,
+                "y": 9,
+                "height": 6,
+                "width": 82
             },
             {
-                "x": "10.3vw",
-                "y": "9%",
-                "height": "6vw",
-                "width": "82%"
+                "x": 10.3,
+                "y": 9,
+                "height": 6,
+                "width": 82
             }
         ]
     },
@@ -48,22 +61,22 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "103.8vw",
-                "y": "10%",
-                "height": "37vw",
-                "width": "80%"
+                "x": 103.8,
+                "y": 10,
+                "height": 37,
+                "width": 80
             },
             {
-                "x": "60.8vw",
-                "y": "10%",
-                "height": "37vw",
-                "width": "80%"
+                "x": 60.8,
+                "y": 10,
+                "height": 37,
+                "width": 80
             },
             {
-                "x": "17.8vw",
-                "y": "10%",
-                "height": "37vw",
-                "width": "80%"
+                "x": 17.8,
+                "y": 10,
+                "height": 37,
+                "width": 80
             }
         ]
     },
@@ -73,22 +86,22 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "93.5vw",
-                "y": "16.5%",
-                "height": "28vw",
-                "width": "33%"
+                "x": 93.5,
+                "y": 16.5,
+                "height": 28,
+                "width": 33
             },
             {
-                "x": "59.3vw",
-                "y": "55%",
-                "height": "49vw",
-                "width": "33%"
+                "x": 59.3,
+                "y": 55,
+                "height": 49,
+                "width": 33
             },
             {
-                "x": "24.5vw",
-                "y": "16.5%",
-                "height": "31vw",
-                "width": "36.5%"
+                "x": 24.5,
+                "y": 16.5,
+                "height": 31,
+                "width": 36.5
             }
         ]
     },
@@ -98,22 +111,22 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "95vw",
-                "y": "10%",
-                "height": "32vw",
-                "width": "79%"
+                "x": 95,
+                "y": 10,
+                "height": 32,
+                "width": 79
             },
             {
-                "x": "59vw",
-                "y": "10%",
-                "height": "32vw",
-                "width": "79%"
+                "x": 59,
+                "y": 10,
+                "height": 32,
+                "width": 79
             },
             {
-                "x": "22vw",
-                "y": "10%",
-                "height": "32vw",
-                "width": "79%"
+                "x": 22,
+                "y": 10,
+                "height": 32,
+                "width": 79
             }
         ]
     },
@@ -123,28 +136,28 @@ var question_data = [
         "bg_num" : 0,
         "options": [
             {
-                "x": "77.5vw",
-                "y": "10%",
-                "height": "58vw",
-                "width": "38%"
+                "x": 77.5,
+                "y": 10,
+                "height": 58,
+                "width": 38
             },
             {
-                "x": "77.5vw",
-                "y": "52%",
-                "height": "58vw",
-                "width": "38%"
+                "x": 77.5,
+                "y": 52,
+                "height": 58,
+                "width": 38
             },
             {
-                "x": "15.5vw",
-                "y": "10%",
-                "height": "57.5vw",
-                "width": "38%"
+                "x": 15.5,
+                "y": 10,
+                "height": 57.5,
+                "width": 38
             },
             {
-                "x": "15.5vw",
-                "y": "52%",
-                "height": "57.5vw",
-                "width": "38%"
+                "x": 15.5,
+                "y": 52,
+                "height": 57.5,
+                "width": 38
             }
         ]
     }
@@ -164,7 +177,7 @@ function generateForm() {
         question_list.push({
             content: createQuestionItem(question_data[i])
         });
-    };
+    }
 
     question_list.push({
         content: (function () {
@@ -178,6 +191,15 @@ function generateForm() {
             for (var i = 1; i <= 3; i++) {
                 var image = document.createElement("img");
                 image.src = q_path + "6_" + i + ".png";
+                image.style.maxHeight = "150%";
+                // 适配短屏幕
+                if (i === 1) {
+                    if (!isLongScreen) {
+                        image.style.top = "-6vh";
+                    }
+                    // image.style.top = "5vw";
+                    // image.style.bottom = "none";
+                }
                 image.alt = "#";
                 submit_page.appendChild(image);
             }
@@ -193,6 +215,9 @@ function generateForm() {
             text_name.setAttribute("oninput", "setCustomValidity('')");
 
             btn_submit.id = "btn-submit";
+            btn_submit.style.maxHeight = "150%";
+            text_name.style.maxHeight = "150%";
+
             // btn_submit.setAttribute("type", "submit");
             // btn_submit.setAttribute("value", "Submit");
             btn_submit.setAttribute("onclick", "submitForm()");
@@ -225,15 +250,20 @@ function generate_input(x, y, h, w, input_type, input_name, input_value) {
     radio.id = bind_id;
     choice.setAttribute("for", bind_id);
 
+    // 用于适配，调整按钮位置
+    var x_offset = 0;
+    if (!isLongScreen) {
+        x_offset = -4;
+    }
+
     //设置label的位置
-    choice.style.bottom = x;
-    choice.style.left = y;
-    choice.style.height = h;
-    choice.style.width = w;
+    choice.style.bottom = (x + x_offset).toString() + x_unit;
+    choice.style.left = y.toString() + y_unit;
+    choice.style.height = h.toString() + h_unit;
+    choice.style.width = w.toString() + w_unit;
 
     return [radio, choice];
 }
-
 
 // 用于生成单个问题项
 function createQuestionItem(content) {
@@ -245,8 +275,12 @@ function createQuestionItem(content) {
     // 题目
     var question_title = document.createElement("img");
     question_title.src = q_path + content["id"] + ".png";
-    question_title.style.maxHeight = "100%";
+    question_title.style.maxHeight = "150%";
     question_title.alt = "#";
+    if (!isLongScreen) {
+        question_title.style.bottom = "-12vw";
+    }
+
     item.appendChild(question_title);
 
     // 题目背景，仅第一题有
@@ -254,6 +288,15 @@ function createQuestionItem(content) {
         for (var i = 0; i < content["bg_num"]; i++) {
             var bg = document.createElement("img");
             bg.src = q_path + content["id"] + "_bg" + (i + 1) + ".png";
+            bg.style.maxHeight = "150%";
+            if (!isLongScreen) {
+                if (i < 2) {
+                    bg.style.bottom = "-13vw";
+                }
+                else {
+                    bg.style.bottom = "-6vw";
+                }
+            }
             bg.alt = "#";
             item.appendChild(bg);
         }
@@ -269,6 +312,10 @@ function createQuestionItem(content) {
         btn_img.style.maxHeight = "150%";
         btn_img.alt = "#";
         btn_img.id = id;
+
+        if (!isLongScreen) {
+            btn_img.style.bottom = "-4vw";
+        }
 
         item.appendChild(btn_img);
 
