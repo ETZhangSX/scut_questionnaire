@@ -245,7 +245,7 @@ function createQuestionItem(content) {
     // 题目
     var question_title = document.createElement("img");
     question_title.src = q_path + content["id"] + ".png";
-    question_title.style.maxHeight = "150%";
+    question_title.style.maxHeight = "100%";
     question_title.alt = "#";
     item.appendChild(question_title);
 

@@ -109,7 +109,7 @@ body {
 /*滑动下一页提示图标*/
 #slide_next {
     display: block;
-    max-width: 100%;
+    width: 100%;
     position: fixed;
     bottom: 3.5vw;
 }
