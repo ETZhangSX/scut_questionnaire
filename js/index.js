@@ -1,57 +1,15 @@
-// 用于生成特定位置下的input标签，仅用于实验
-function generate_input(x, y, h, w, input_type, input_name, input_value) {
-    // var container = document.createElement("div");
-    var choice = document.createElement("input");
 
-    // container.className = "option_container";
-    choice.className = "input_option";
-
-    // container.style.position = "absolute";
-
-    choice.setAttribute("type", input_type);
-    choice.setAttribute("name", input_name);
-    choice.setAttribute("value", input_value);
-
-
-    choice.style.display = "block";
-    choice.style.position = "absolute";
-    choice.style.background = "black";
-    choice.style.zIndex = "3";
-    choice.style.top = x;
-    choice.style.left = y;
-    choice.style.height = h;
-    choice.style.width = w;
-    // container.setAttribute("style", "float: left;");
-    // container.style.top = x;
-    // container.style.left = y;
-    // container.style.height = h;
-    // container.style.width = w;
-
-    // container.appendChild(choice);
-    // return container;
-    return choice;
-}
-// 同上
-function generate_question() {
-    var container = document.createElement("div");
-    // container.setAttribute("position", "relative");
-    container.style.height = "100%";
-    container.style.position = "relative";
-    container.style.background = "url(../images/1.png) no-repeat";
-    container.appendChild(generate_input("10%", "10%", "100px", "20px", "radio", "1", 1));
-    container.appendChild(generate_input("20%", "20%", "100px", "20px", "radio", "1", 2));
-    container.appendChild(generate_input("30%", "30%", "100px", "20px", "radio", "1", 3));
-    return container;
-}
-
-function generate_form() {
-    var form = document.getElementById("question_form");
-    form.appendChild(generate_question());
-}
-//以上内容对主页没有任何实际意义hhhhhh
-/******************分割线**********8*******/
+/******************分割线******************/
 
 var u = navigator.userAgent;
+var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+
+function getScreenRation() {
+    var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
+    console.log(ratio);
+    if (ratio < (16 / 9)) isLongScreen = false;
+    console.log(isLongScreen);
+}
 
 // 选择选项隐藏主页并限制指定页面
 function choose_num(num) {
@@ -68,6 +26,9 @@ function choose_num(num) {
 
     var text = document.createElement("img");
     text.src = "../resource/others/index_text" + num + ".png";
+    if (!isLongScreen) {
+        text.style.top = "-9vw";
+    }
     text.alt = "#";
 
     var btn_image = document.createElement("img");

@@ -11,12 +11,13 @@
     <script src="../js/index.js"></script>
 </head>
 <body>
+<div id="background_border"></div>
 <div id="index_title">
-    <img src="../resource/others/index_1.png" alt="#">
+    <img id="index_head" src="../resource/others/index_1.png" alt="#">
     <img src="../resource/others/bg_door.png" alt="#" style="z-index: 1">
     <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0">
     <div id="img_btn">
-        <img src="../resource/others/index_2.png" alt="#">
+        <img id="index_content" src="../resource/others/index_2.png" alt="#">
         <img src="../resource/others/index_btn1.png" alt="#" style="z-index: 2" onclick="choose_1()">
         <img src="../resource/others/index_btn2.png" alt="#" style="z-index: 2" onclick="choose_2()">
         <img src="../resource/others/index_btn3.png" alt="#" style="z-index: 2" onclick="choose_3()">
@@ -59,6 +60,13 @@
         label.style.top = "30%";
         wrong_d.appendChild(label);
         document.body.appendChild(wrong_d);
+    }
+    getScreenRation();
+    if (!isLongScreen) {
+        var title = document.getElementById("index_head");
+        title.style.top = "-2.5vw";
+        var content = document.getElementById("index_content");
+        content.style.top = "-10vw";
     }
 </script>
 </body>
