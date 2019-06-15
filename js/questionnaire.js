@@ -183,7 +183,7 @@ function generateForm() {
             }
 
             var text_name = document.createElement("input");
-            var btn_submit = document.createElement("input");
+            var btn_submit = document.createElement("button");
 
             text_name.id = "name-text";
             text_name.placeholder = "您的名字";
@@ -193,8 +193,8 @@ function generateForm() {
             text_name.setAttribute("oninput", "setCustomValidity('')");
 
             btn_submit.id = "btn-submit";
-            btn_submit.setAttribute("type", "submit");
-            btn_submit.setAttribute("value", "Submit");
+            // btn_submit.setAttribute("type", "submit");
+            // btn_submit.setAttribute("value", "Submit");
             btn_submit.setAttribute("onclick", "submitForm()");
 
             submit_page.appendChild(text_name);
@@ -245,6 +245,7 @@ function createQuestionItem(content) {
     // 题目
     var question_title = document.createElement("img");
     question_title.src = q_path + content["id"] + ".png";
+    question_title.style.maxHeight = "150%";
     question_title.alt = "#";
     item.appendChild(question_title);
 
@@ -265,6 +266,7 @@ function createQuestionItem(content) {
         var id = content["id"].toString() + "_a" + (parseInt(k) + 1);
         btn_img.className = "q" + content["id"] + "_img";
         btn_img.src = q_path + id + ".png";
+        btn_img.style.maxHeight = "150%";
         btn_img.alt = "#";
         btn_img.id = id;
 
@@ -377,7 +379,8 @@ function submitForm() {
     url = "result.html?name=" + encodeURI(name) + "&user_answer=" + user_answer;
     console.log(url);
     // sleep(3000);
-    document.getElementById("form").setAttribute("action", url);
+    // document.getElementById("form").setAttribute("action", url);
+    window.location.href = url;
 }
 
 function sleep(numberMillis) {
