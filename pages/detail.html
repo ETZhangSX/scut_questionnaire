@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8"/>
     <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5,user-scalable=no"/>
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
     <title>测测你最适合哪个学院</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link href="../css/detail.css" rel="stylesheet">
+    <script src="../js/questionnaire.js"></script>
 </head>
 <body>
+<div id="background_border"></div>
 <div class="background_img">
     <img src="../resource/others/bg_door.png" alt="#">
     <img src="../resource/others/qrcode_text.png" alt="#">
@@ -18,36 +21,44 @@
 <div id="school_detail"></div>
 <script id="show-code">
     var button_high_of = {
-        "ARCH": "34.5vw",
-        "ART": "38.5vw",
-        "AUTOSE": "28vw",
-        "BADMIN": "26.8vw",
-        "BBE": "27.5vw",
-        "BIO": "35vw",
-        "CCE": "33.7vw",
-        "CIVIL": "29.7vw",
-        "CS": "38.25vw",
-        "DESIGN": "38vw",
-        "ECO": "32.8vw",
-        "EIE": "30vw",
-        "ENVIR": "30.2vw",
-        "EP": "28.6vw",
-        "FL": "30.2vw",
-        "FOOD": "32.6vw",
-        "INTERE": "34vw",
-        "JC": "29.4vw",
-        "LAW": "32.4vw",
-        "LIE": "36.8vw",
-        "MAE": "34.5vw",
-        "MARXISM": "35.2vw",
-        "MATH": "27.5vw",
-        "MEDIC": "38.5vw",
-        "MSE": "38.2vw",
-        "PADMIN": "31vw",
-        "PHY": "28.1vw",
-        "PHYE": "38.8vw",
-        "SOFTE": "32.5vw",
+        "ARCH": 34.5,
+        "ART": 38.5,
+        "AUTOSE": 28,
+        "BADMIN": 26.8,
+        "BBE": 27.5,
+        "BIO": 35,
+        "CCE": 33.7,
+        "CIVIL": 29.7,
+        "CS": 38.25,
+        "DESIGN": 38,
+        "ECO": 32.8,
+        "EIE": 30,
+        "ENVIR": 30.2,
+        "EP": 28.6,
+        "FL": 30.2,
+        "FOOD": 32.6,
+        "INTERE": 34,
+        "JC": 29.4,
+        "LAW": 32.4,
+        "LIE": 36.8,
+        "MAE": 34.5,
+        "MARXISM": 35.2,
+        "MATH": 27.5,
+        "MEDIC": 38.5,
+        "MSE": 38.2,
+        "PADMIN": 31,
+        "PHY": 28.1,
+        "PHYE": 38.8,
+        "SOFTE": 32.5,
     };
+    var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+
+    function getScreenRation() {
+        var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
+        console.log(ratio);
+        if (ratio < (16 / 9)) isLongScreen = false;
+        console.log(isLongScreen);
+    }
 
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -60,9 +71,21 @@
     function loadDetailInfo(schoolName) {
         var file_path = "../resource/intro/" + schoolName;
         var bottom = button_high_of[schoolName];
-        document.getElementById("school_list").style.bottom = bottom;
         var title = document.createElement("img");
         var text = document.createElement("img");
+        var offset = 0;
+
+        if (!isLongScreen) {
+            offset = -7;
+            title_ratio = 74;
+            title.style.top = -0.5 + "vw";
+            // title.style.height = "130vw";
+            // title.style.width = "100%";
+            title.style.maxWidth = title_ratio + "%";
+            title.style.left = (100 - title_ratio) / 2 + "%";
+            text.style.bottom = offset + "vw";
+        }
+        document.getElementById("school_list").style.bottom = bottom + offset + "vw";
 
         title.src = file_path + "-1.png";
         text.src = file_path + "-2.png";
@@ -77,6 +100,7 @@
     }
 
     var school = getUrlParam("school");
+    getScreenRation();
     loadDetailInfo(school);
 </script>
 </body>

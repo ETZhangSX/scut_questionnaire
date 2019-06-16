@@ -173,11 +173,11 @@ var list = [];
 // 根据题目数据写HTML，将document push到list中
 function generateForm() {
 
-    for (var i in question_data) {
-        question_list.push({
-            content: createQuestionItem(question_data[i])
-        });
-    }
+    // for (var i in question_data) {
+    //     question_list.push({
+    //         content: createQuestionItem(question_data[i])
+    //     });
+    // }
 
     question_list.push({
         content: (function () {
@@ -191,11 +191,11 @@ function generateForm() {
             for (var i = 1; i <= 3; i++) {
                 var image = document.createElement("img");
                 image.src = q_path + "6_" + i + ".png";
-                image.style.maxHeight = "150%";
+                image.style.maxHeight = "300%";
                 // 适配短屏幕
                 if (i === 1) {
                     if (!isLongScreen) {
-                        image.style.top = "-6vh";
+                        image.style.bottom = "-20vw";
                     }
                     // image.style.top = "5vw";
                     // image.style.bottom = "none";
@@ -215,8 +215,8 @@ function generateForm() {
             text_name.setAttribute("oninput", "setCustomValidity('')");
 
             btn_submit.id = "btn-submit";
-            btn_submit.style.maxHeight = "150%";
-            text_name.style.maxHeight = "150%";
+            btn_submit.style.maxHeight = "300%";
+            text_name.style.maxHeight = "300%";
 
             // btn_submit.setAttribute("type", "submit");
             // btn_submit.setAttribute("value", "Submit");
