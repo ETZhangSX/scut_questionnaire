@@ -3,12 +3,20 @@ var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
 
+// wx需要的数据
+let appid;
+let timestamp;
+let noncestr;
+let signature;
+
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
     console.log(ratio);
     if (ratio < (16 / 9)) isLongScreen = false;
     console.log(isLongScreen);
 }
+
+
 // 获取传入参数
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -72,4 +80,48 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
     result.appendChild(school);
     result.appendChild(personality_1);
     result.appendChild(personality_2);
+}
+
+function getWxConfig() {
+    $.get("../php/jssdk.php",function(data,status){
+        // alert("数据: " + data.toString() + "\n状态: " + status);
+        // console.log(data);
+        appid = data[0];
+        timestamp = data[1];
+        noncestr = data[2];
+        signature = data[3];
+        setupWxShare();
+    });
+}
+
+function setupWxShare() {
+    // 微信分享操作
+    wx.config({
+        debug: false,
+        appId: appid,       // AppId
+        timestamp: timestamp,        // 时间戳
+        nonceStr: noncestr,     // 随机字符串
+        signature: signature,       // 签名
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone', 'showOptionMenu', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem']
+    });
+
+    wx.ready(function () {
+        const share = {
+            title: '测测你最适合哪个学院',
+            desc: '我刚刚在华工青年测试了适合自己的学院，你也来试试吧！',
+            imgUrl: '../resource/others/share_icon.jpg',
+            link: 'https://scut_questionnaire.100steps.net/pages/index.html',
+            success: function () {
+                // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
+            },
+            cancel: function () {
+                //
+            }
+        };
+        wx.onMenuShareAppMessage(share);  // 微信好友
+        wx.onMenuShareTimeline(share);  // 朋友圈
+        wx.onMenuShareQQ(share);  // QQ
+        wx.onMenuShareQZone(share);  // QQ空间
+        wx.onMenuShareWeibo(share);  // 腾讯微博
+    });
 }
