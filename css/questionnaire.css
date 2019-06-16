@@ -22,7 +22,7 @@ body {
     background-size: 100% 100%;
     bottom: 0;
     left: 0;
-    border: 2vw solid #ddd;
+    border: 3vw solid #ddd;
     border-image: -webkit-linear-gradient(#09357e, #e586a5) 20 20;
 
     border-image: -moz-linear-gradient(#09357e, #e586a5) 20 20;

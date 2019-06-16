@@ -11,6 +11,7 @@
     <script src="../js/result.js"></script>
 </head>
 <body>
+<div id="background_border"></div>
 <div class="background_img">
     <h4 id="user_name">
         您的名字
@@ -19,7 +20,7 @@
     <img src="../resource/result/bg_1.png" alt="#" id="bg_title">
     <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0">
     <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo">
-    <img src="../resource/result/bg_2.png" alt="#">
+    <img src="../resource/result/bg_2.png" alt="#" id="bg_background">
     <img src="../resource/others/qrcode_text.png" alt="#">
     <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode">
 </div>
@@ -31,6 +32,7 @@
     var user_answer = getUrlParam("user_answer");
     console.log(name);
     console.log(user_answer);
+    getScreenRation();
     if (name != null && user_answer != null) {
         var resultMap = getResultRelation();
         if (resultMap.hasOwnProperty(user_answer)) {
