@@ -173,11 +173,11 @@ var list = [];
 // 根据题目数据写HTML，将document push到list中
 function generateForm() {
 
-    // for (var i in question_data) {
-    //     question_list.push({
-    //         content: createQuestionItem(question_data[i])
-    //     });
-    // }
+    for (var i in question_data) {
+        question_list.push({
+            content: createQuestionItem(question_data[i])
+        });
+    }
 
     question_list.push({
         content: (function () {
