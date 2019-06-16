@@ -9,7 +9,9 @@ var S;                                  // iSlider实例
 var index = 1;                          // 页面计数器，值为最后一页
 var isEnd = true;                       // 是否在最后一题
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+var winHeight = 0;
 
+// 获取屏幕比例，判断是否为长屏幕
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
     console.log(ratio);
@@ -17,6 +19,19 @@ function getScreenRation() {
     console.log(isLongScreen);
 }
 
+function nameTextOnFocus(offsetHeight) {
+    var items = document.getElementsByClassName("item");
+    for (var i in items) {
+        items[i].style.setProperty("-webkit-transform", "translate(0, " + offsetHeight + "px)");
+    }
+}
+
+function nameTextOnBlur() {
+    var items = document.getElementsByClassName("item");
+    for (var i in items) {
+        items[i].style.setProperty("-webkit-transform", "translate(0, 0)");
+    }
+}
 /*
 ** 用于存储问题信息
 ** id: 每个问题有唯一id
@@ -184,6 +199,7 @@ function generateForm() {
             var submit_page = document.createElement("div");
             submit_page.className = "question_item";
             var scut_logo = document.createElement("img");
+            scut_logo.className = "item";
             scut_logo.src = "../resource/others/bg_scut.png";
             scut_logo.alt = "#";
             submit_page.appendChild(scut_logo);
@@ -191,6 +207,7 @@ function generateForm() {
             for (var i = 1; i <= 3; i++) {
                 var image = document.createElement("img");
                 image.src = q_path + "6_" + i + ".png";
+                image.className = "item";
                 image.style.maxHeight = "300%";
                 // 适配短屏幕
                 if (i === 1) {
@@ -213,11 +230,15 @@ function generateForm() {
             text_name.required = true;
             text_name.setAttribute("oninvalid", "setCustomValidity('请输入您的姓名')");
             text_name.setAttribute("oninput", "setCustomValidity('')");
+            // text_name.setAttribute("onfocus", "nameTextOnFocus()");
+            // text_name.setAttribute("onblur", "nameTextOnBlur()");
 
             btn_submit.id = "btn-submit";
             btn_submit.style.maxHeight = "300%";
             text_name.style.maxHeight = "300%";
 
+            text_name.className = "item";
+            btn_submit.className = "item";
             // btn_submit.setAttribute("type", "submit");
             // btn_submit.setAttribute("value", "Submit");
             btn_submit.setAttribute("onclick", "submitForm()");
@@ -362,19 +383,10 @@ function show(el, offset){
     }, 10);
 }
 
+
 /*
-TODO: 添加单选按钮的选择点击逻辑，包括但不限于：
-    -check给相应学院加减分;
-    -[已完成]check改变相应选项图片的为点击样式, 即实现图片的切换, 可通过id操作
-    （每个选项的img标签都有id，格式为 [题目编号]_a[选项编号], 例如: 1_a3);
-    -uncheck需要回退上述所有操作;
-    -[已完成]在进行选择后, 需要显示滑动进入下一题图标[id: slide_next];
-    -[已完成]进行选择后才可滑动到下一题, 暂时想到的可行方案是重写generateForm()函数
-     不一次性push，而是每题第一次check再动态push下一页;
-     或者无需重写，使用新list，每次check从一个list push到iSlider的容器list
+选项被选择时的执行逻辑
  */
-
-
 function radioChange(obj) {
     var q_name = obj.name;
     var img_id = q_name + "_a" + obj.value;

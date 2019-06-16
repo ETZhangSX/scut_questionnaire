@@ -53,11 +53,11 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
     personality_2.alt = "#";
 
     if (!isLongScreen) {
-        // school.style.top = "-4vw";
         school.className = "school_short";
         document.getElementById("user_name").style.top = "7vw";
         document.getElementById("bg_title").style.top = "-15vw";
         document.getElementById("bg_background").style.bottom = "-6.5vw";
+        document.getElementById("school_btn").style.bottom = "112vw";
         personality_1.id = "personality_short_1";
         personality_2.id = "personality_short_2";
     }
