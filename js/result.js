@@ -1,12 +1,21 @@
 var school_img_path = "../resource/result/department/";
 var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
+var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
 
 // wx需要的数据
 let appid;
 let timestamp;
 let noncestr;
 let signature;
+
+function getScreenRation() {
+    var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
+    console.log(ratio);
+    if (ratio < (16 / 9)) isLongScreen = false;
+    console.log(isLongScreen);
+}
+
 
 // 获取传入参数
 function getUrlParam(name) {
@@ -51,9 +60,21 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
     personality_1.alt = "#";
     personality_2.alt = "#";
 
+    if (!isLongScreen) {
+        // school.style.top = "-4vw";
+        school.className = "school_short";
+        document.getElementById("user_name").style.top = "7vw";
+        document.getElementById("bg_title").style.top = "-15vw";
+        document.getElementById("bg_background").style.bottom = "-6.5vw";
+        personality_1.id = "personality_short_1";
+        personality_2.id = "personality_short_2";
+    }
+    else {
+        personality_1.id = "personality_1";
+        personality_2.id = "personality_2";
+    }
+
     school.id = "school";
-    personality_1.id = "personality_1";
-    personality_2.id = "personality_2";
 
     var result = document.getElementById("result_img");
     result.appendChild(school);

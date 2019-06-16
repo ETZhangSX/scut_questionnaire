@@ -1,11 +1,19 @@
 var departmant_img_path = "../resource/list/";
+var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+
+function getScreenRation() {
+    var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
+    console.log(ratio);
+    if (ratio < (16 / 9)) isLongScreen = false;
+    console.log(isLongScreen);
+}
 
 function generate_table() {
 
     var departments = document.getElementsByClassName("departments")[0];
 
-    var department_list1 = document.createElement("div");
-    department_list1.className = "department_left";
+    var department_left = document.createElement("div");
+    department_left.className = "department_left";
 
     for (var i = 1; i < 16; i++) {
         var department_item = document.createElement("div");
@@ -17,11 +25,11 @@ function generate_table() {
         pic.className = "department_img";
 
         department_item.appendChild(pic);
-        department_list1.appendChild(department_item)
+        department_left.appendChild(department_item)
     }
 
-    var department_list2 = document.createElement("div");
-    department_list2.className = "department_right";
+    var department_right = document.createElement("div");
+    department_right.className = "department_right";
     for (var i = 16; i < 30; i++) {
         var department_item = document.createElement("div");
         department_item.className = "department_item";
@@ -30,10 +38,16 @@ function generate_table() {
         pic.src = departmant_img_path + i + ".png";
         pic.className = "department_img";
         department_item.appendChild(pic);
-        department_list2.appendChild(department_item)
+        department_right.appendChild(department_item)
     }
-    departments.appendChild(department_list1);
-    departments.appendChild(department_list2);
+    if (!isLongScreen) {
+        var translate = 5;
+        var offset = 9.5;
+        department_left.style.bottom = translate + "vw";
+        department_right.style.bottom = translate + offset + "vw";
+    }
+    departments.appendChild(department_left);
+    departments.appendChild(department_right);
 
 }
 
