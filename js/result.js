@@ -100,7 +100,7 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
 }
 
 function getWxConfig() {
-    alert("getting wx config");
+    console.log("getting wx config");
     console.log(location.href.split('#')[0]);
     console.log(encodeURIComponent(location.href.split('#')[0]));
     $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
@@ -118,7 +118,7 @@ function getWxConfig() {
 }
 
 function setupWxShare() {
-    alert("wx setup");
+    console.log("wx setup");
     // 微信分享操作
     wx.config({
         debug: true,
@@ -130,7 +130,7 @@ function setupWxShare() {
     });
 
     wx.ready(function () {
-        alert("wx ready.");
+        console.log("wx ready.");
 
         const share = {
             title: '来测测你最适合哪个学院',
@@ -140,7 +140,7 @@ function setupWxShare() {
         };
 
         wx.error(function () {
-            alert("wx error");
+            console.log("wx error");
         });
 
         wx.checkJsApi({
@@ -148,10 +148,10 @@ function setupWxShare() {
                 'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage'
             ],
             success: function (res) {
-                alert("checkJsApi success" + JSON.stringify(res))
+                console.log("checkJsApi success" + JSON.stringify(res))
             },
             fail: function (res) {
-                alert("checkJsApi fail" + JSON.stringify(res))
+                console.log("checkJsApi fail" + JSON.stringify(res))
             }
         });
 
@@ -161,14 +161,14 @@ function setupWxShare() {
             link: share['link'],
             imgUrl: share['imgUrl'],
             success: function (res) {
-                alert("wxshare setup success." + res)
+                console.log("wxshare setup success." + res)
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
             fail: function (res) {
-                alert("wxshare setup fail." + res)
+                console.log("wxshare setup fail." + res)
             },
             cancel: function (res) {
-                alert("wxshare setup cancel" + res)
+                console.log("wxshare setup cancel" + res)
             }
         });
 
@@ -177,14 +177,14 @@ function setupWxShare() {
             link: share['link'],
             imgUrl: share['imgUrl'],
             success: function (res) {
-                alert("wxshare setup success." + res)
+                console.log("wxshare setup success." + res)
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
             fail: function (res) {
-                alert("wxshare setup fail." + res)
+                console.log("wxshare setup fail." + res)
             },
             cancel: function (res) {
-                alert("wxshare setup cancel" + res)
+                console.log("wxshare setup cancel" + res)
             }
         })
 
