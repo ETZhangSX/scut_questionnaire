@@ -9,6 +9,7 @@ var S;                                  // iSlider实例
 var index = 1;                          // 页面计数器，值为最后一页
 var isEnd = true;                       // 是否在最后一题
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+var u = navigator.userAgent;
 var winHeight = 0;
 
 // 获取屏幕比例，判断是否为长屏幕
@@ -204,19 +205,33 @@ function generateForm() {
             scut_logo.alt = "#";
             submit_page.appendChild(scut_logo);
 
+            var text_name_offset = 0;
+
             for (var i = 1; i <= 3; i++) {
                 var image = document.createElement("img");
                 image.src = q_path + "6_" + i + ".png";
                 image.className = "item";
                 image.style.maxHeight = "300%";
                 // 适配短屏幕
-                if (i === 1) {
-                    if (!isLongScreen) {
-                        image.style.bottom = "-20vw";
+                if (u.indexOf("iPhone") > -1 && !isLongScreen) {
+                    text_name_offset = -6;
+                    if (i === 1) {
+                        image.style.bottom = -20 + text_name_offset + "vw";
                     }
-                    // image.style.top = "5vw";
-                    // image.style.bottom = "none";
+                    if (i === 2) {
+                        image.style.bottom = text_name_offset + "vw";
+                    }
                 }
+                else {
+                    if (i === 1) {
+                        if (!isLongScreen) {
+                            image.style.bottom = "-20vw";
+                        }
+                        // image.style.top = "5vw";
+                        // image.style.bottom = "none";
+                    }
+                }
+
                 image.alt = "#";
                 submit_page.appendChild(image);
             }
@@ -228,6 +243,7 @@ function generateForm() {
             text_name.placeholder = "您的名字";
             text_name.setAttribute("type", "text");
             text_name.required = true;
+            text_name.style.bottom = 91 + text_name_offset + "vw";
             text_name.setAttribute("oninvalid", "setCustomValidity('请输入您的姓名')");
             text_name.setAttribute("oninput", "setCustomValidity('')");
             // text_name.setAttribute("onfocus", "nameTextOnFocus()");
@@ -274,7 +290,15 @@ function generate_input(x, y, h, w, input_type, input_name, input_value) {
     // 用于适配，调整按钮位置
     var x_offset = 0;
     if (!isLongScreen) {
-        x_offset = -4;
+        if (u.indexOf("iPhone") > -1) {
+            if (input_name === 1) {
+                x_offset = -6;
+            }
+            else
+                x_offset = -15;
+        }
+        else
+            x_offset = -4;
     }
 
     //设置label的位置
@@ -283,7 +307,7 @@ function generate_input(x, y, h, w, input_type, input_name, input_value) {
     choice.style.height = h.toString() + h_unit;
     choice.style.width = w.toString() + w_unit;
 
-    return [radio, choice];
+    return [radio, choice, x_offset];
 }
 
 // 用于生成单个问题项
@@ -299,7 +323,11 @@ function createQuestionItem(content) {
     question_title.style.maxHeight = "150%";
     question_title.alt = "#";
     if (!isLongScreen) {
-        question_title.style.bottom = "-12vw";
+        if (content["id"] === 1) {
+            question_title.style.bottom = "-18vw";
+        }
+        else
+            question_title.style.bottom = "-23vw";
     }
 
     item.appendChild(question_title);
@@ -311,12 +339,26 @@ function createQuestionItem(content) {
             bg.src = q_path + content["id"] + "_bg" + (i + 1) + ".png";
             bg.style.maxHeight = "150%";
             if (!isLongScreen) {
-                if (i < 2) {
-                    bg.style.bottom = "-13vw";
+                if (u.indexOf("iPhone") > -1) {
+                    if (i < 1) {
+                        bg.style.bottom = "-26vw";
+                    }
+                    else if (i < 2) {
+                        bg.style.bottom = "-23vw";
+                    }
+                    else {
+                        bg.style.bottom = "-12vw";
+                    }
                 }
                 else {
-                    bg.style.bottom = "-6vw";
+                    if (i < 2) {
+                        bg.style.bottom = "-13vw";
+                    }
+                    else {
+                        bg.style.bottom = "-6vw";
+                    }
                 }
+
             }
             bg.alt = "#";
             item.appendChild(bg);
@@ -334,14 +376,22 @@ function createQuestionItem(content) {
         btn_img.alt = "#";
         btn_img.id = id;
 
-        if (!isLongScreen) {
-            btn_img.style.bottom = "-4vw";
-        }
 
-        item.appendChild(btn_img);
 
         //选项单选按钮
         var option = generate_input(btn["x"], btn["y"], btn["height"], btn["width"], "radio", content["id"], parseInt(k) + 1);
+
+        if (!isLongScreen) {
+            if (u.indexOf("iPhone") > -1) {
+                // TODO: add iPhone adaption
+                btn_img.style.bottom = option[2] + "vw";
+            }
+            else {
+                btn_img.style.bottom = option[2] + "vw";
+            }
+        }
+
+        item.appendChild(btn_img);
         item.appendChild(option[0]);
         item.appendChild(option[1]);
     }
@@ -439,7 +489,8 @@ function submitForm() {
     console.log(url);
     // sleep(3000);
     // document.getElementById("form").setAttribute("action", url);
-    window.location.href = url;
+    if (name != "")
+        window.location.href = url;
 }
 
 function sleep(numberMillis) {
