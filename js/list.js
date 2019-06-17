@@ -99,3 +99,51 @@ function getDepartmentName(i){
         case 29: return "AUTOSE";
     }
 }
+
+function getDepartment(i) {
+    switch (i) {
+        case "MSE": return "材料学院";
+        case "EP": return "电力学院";
+        case "EIE": return "电信学院";
+        case "LAW": return "法学院";
+        case "BADMIN": return "工管学院";
+        case "PADMIN": return "公管学院";
+        case "INTERE": return "国际学院";
+        case "CCE": return "化工学院";
+        case "ENVIR": return "环境学院";
+        case "MAE": return "机汽学院";
+        case "CS": return "计算机学院";
+        case "ARCH": return "建筑学院";
+        case "ECO": return "经贸学院";
+        case "MARXISM": return "马克思学院";
+        case "LIE": return "轻工学院";
+        case "SOFTE": return "软件学院";
+        case "DESIGN": return "设计学院";
+        case "BIO": return "生物学院";
+        case "BBE": return "生物医学院";
+        case "FOOD": return "食品学院";
+        case "MATH": return "数学学院";
+        case "PHYE": return "体育学院";
+        case "CIVIL": return "土交学院";
+        case "FL": return "外国语学院";
+        case "PHY": return "物理学院";
+        case "JC": return "新传学院";
+        case "MEDIC": return "医学院";
+        case "ART": return "艺术学院";
+        case "AUTOSE": return "自动化学院";
+    }
+}
+
+function getPersonality(i) {
+    switch (i) {
+        case 1: return "观察型";
+        case 2: return "浪漫型";
+        case 3: return "实干型";
+        case 4: return "挑战型";
+        case 5: return "调停型";
+        case 6: return "完美型";
+        case 7: return "享乐型";
+        case 8: return "忠诚型";
+        case 9: return "助人型";
+    }
+}

@@ -7,7 +7,10 @@
     <title>测测你最适合哪个学院</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link href="../css/detail.css" rel="stylesheet">
-    <script src="../js/questionnaire.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../js/detail.js"></script>
+    <script src="../js/list.js"></script>
 </head>
 <body>
 <div id="background_border"></div>
@@ -113,6 +116,11 @@
     var school = getUrlParam("school");
     getScreenRation();
     loadDetailInfo(school);
+    setDepart(getDepartment(school));
+
+    $(document).ready(function () {
+        getWxConfig();
+    })
 </script>
 </body>
 </html>

@@ -11,6 +11,11 @@ var noncestr = "";
 var signature = "";
 var url = "";
 
+var depart;
+function setDepart(d) {
+    depart = d;
+}
+
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
     console.log(ratio);
@@ -131,12 +136,13 @@ function setupWxShare() {
 
     wx.ready(function () {
         console.log("wx ready.");
+        console.log(depart);
 
         const share = {
-            title: '来测测你最适合哪个学院',
-            desc: '我刚刚在华工青年测试了适合自己的学院，你也来试试吧！',
-            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: 'https://scut_questionnaire.100steps.net/pages/index.html',
+            title: '我最合适的学院竟然是' + depart + '？',
+            desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
+            imgUrl: '../resource/others/share_icon.jpg',
+            link: window.location["href"] + "&share=true" ,//'https://scut_questionnaire.100steps.net/pages/index.html',
         };
 
         wx.error(function () {
@@ -155,7 +161,7 @@ function setupWxShare() {
             }
         });
 
-        wx.onMenuShareAppMessage({
+        wx.updateAppMessageShareData({
             title: share['title'],
             desc: share['desc'],
             link: share['link'],
@@ -172,7 +178,7 @@ function setupWxShare() {
             }
         });
 
-        wx.onMenuShareTimeline({
+        wx.updateTimelineShareData({
             title: share['title'],
             link: share['link'],
             imgUrl: share['imgUrl'],
@@ -188,8 +194,6 @@ function setupWxShare() {
             }
         })
 
-        // wx.onMenuShareAppMessage(share);  // 微信好友
-        // wx.onMenuShareTimeline(share);  // 朋友圈
     });
 }
 

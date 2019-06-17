@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/bootstrap.js"></script>
     <script src="../js/index.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 <div id="background_border"></div>
@@ -28,6 +30,7 @@
     </div>
 </div>
 <script>
+    console.log(window.location);
     console.log(u);
     if (u.indexOf('Android') <= -1 && u.indexOf("iPhone") <= -1 && u.indexOf('Windows Phone') <= -1) {
         document.getElementById("index_title").style.display = "none";
@@ -80,6 +83,10 @@
         }
 
     }
+
+    $(document).ready(function () {
+        getWxConfig();
+    })
 </script>
 </body>
 </html>
