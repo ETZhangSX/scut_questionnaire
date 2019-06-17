@@ -4,10 +4,10 @@ var result_path = "../resource/result/result.txt";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
 
 // wx需要的数据
-let appid;
-let timestamp;
-let noncestr;
-let signature;
+var appid="";
+var timestamp=0;
+var noncestr="";
+var signature="";
 
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
@@ -68,8 +68,7 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
         document.getElementById("bg_background").style.bottom = "-6.5vw";
         personality_1.id = "personality_short_1";
         personality_2.id = "personality_short_2";
-    }
-    else {
+    } else {
         personality_1.id = "personality_1";
         personality_2.id = "personality_2";
     }
@@ -83,45 +82,94 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
 }
 
 function getWxConfig() {
-    $.get("../php/jssdk.php",function(data,status){
-        // alert("数据: " + data.toString() + "\n状态: " + status);
-        // console.log(data);
-        appid = data[0];
-        timestamp = data[1];
-        noncestr = data[2];
-        signature = data[3];
-        setupWxShare();
+    $.get("../php/jssdk.php", function (data, status) {
+        console.log(data);
+        var result = data.split(' ');
+        appid = result[0];
+        console.log(appid);
+        timestamp = result[1];
+        noncestr = result[2];
+        signature = result[3];
+
+        setupWxShare()
     });
 }
 
 function setupWxShare() {
+    alert("wx setup");
     // 微信分享操作
     wx.config({
-        debug: false,
+        debug: true,
         appId: appid,       // AppId
         timestamp: timestamp,        // 时间戳
         nonceStr: noncestr,     // 随机字符串
         signature: signature,       // 签名
-        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone', 'showOptionMenu', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem']
+        jsApiList: ['checkJsApi', 'openLocation', 'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage']
     });
 
     wx.ready(function () {
+        alert("wx ready.");
+
         const share = {
-            title: '测测你最适合哪个学院',
+            title: '来测测你最适合哪个学院',
             desc: '我刚刚在华工青年测试了适合自己的学院，你也来试试吧！',
             imgUrl: '../resource/others/share_icon.jpg',
             link: 'https://scut_questionnaire.100steps.net/pages/index.html',
-            success: function () {
+        };
+
+        wx.error(function () {
+            alert("wx error");
+        });
+
+        wx.checkJsApi({
+            jsApiList: [
+                'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage'
+            ],
+            success: function (res) {
+                alert("checkJsApi" + JSON.stringify(res))
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: share['title'],
+            desc: share['desc'],
+            link: share['link'],
+            imgUrl: share['imgUrl'],
+            success: function (res) {
+                alert("wxshare setup success." + res)
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
-            cancel: function () {
-                //
+            fail: function (res) {
+                alert("wxshare setup fail." + res)
+            },
+            cancel: function (res) {
+                alert("wxshare setup cancel" + res)
             }
-        };
-        wx.onMenuShareAppMessage(share);  // 微信好友
-        wx.onMenuShareTimeline(share);  // 朋友圈
-        wx.onMenuShareQQ(share);  // QQ
-        wx.onMenuShareQZone(share);  // QQ空间
-        wx.onMenuShareWeibo(share);  // 腾讯微博
+        });
+
+        wx.onMenuShareTimeline({
+            title: share['title'],
+            link: share['link'],
+            imgUrl: share['imgUrl'],
+            success: function (res) {
+                alert("wxshare setup success." + res)
+                // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
+            },
+            fail: function (res) {
+                alert("wxshare setup fail." + res)
+            },
+            cancel: function (res) {
+                alert("wxshare setup cancel" + res)
+            }
+        })
+
+        // wx.onMenuShareAppMessage(share);  // 微信好友
+        // wx.onMenuShareTimeline(share);  // 朋友圈
     });
 }
+
+
+
+
+
+
