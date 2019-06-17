@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
     <title>测测你最适合哪个学院</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/result.css">
@@ -32,6 +33,7 @@
 <script>
     var name = getUrlParam("name");
     var user_answer = getUrlParam("user_answer");
+    updateUserConfig(name, user_answer);
     console.log(name);
     console.log(user_answer);
     getScreenRation();
@@ -41,8 +43,7 @@
             var result = resultMap[user_answer];
             loadResultInfo(name, result["depart"], result["first"], result["second"]);
             document.getElementById("school_btn").setAttribute("onclick", "window.location.href='detail.html?school=" + result["depart"] + "'")
-        }
-        else loadResultInfo("不存在对应学院", "CS", "1", "2");
+        } else loadResultInfo("不存在对应学院", "CS", "1", "2");
     }
 
     $(document).ready(function () {

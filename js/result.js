@@ -4,10 +4,18 @@ var result_path = "../resource/result/result.txt";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
 
 // wx需要的数据
-var appid="";
-var timestamp=0;
-var noncestr="";
-var signature="";
+var user_name = "";
+var user_selection = "";
+var appid = "";
+var timestamp = 0;
+var noncestr = "";
+var signature = "";
+var url = "";
+
+function updateUserConfig(name, selection) {
+    user_name = name;
+    user_selection = selection;
+}
 
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
@@ -15,7 +23,6 @@ function getScreenRation() {
     if (ratio < (16 / 9)) isLongScreen = false;
     console.log(isLongScreen);
 }
-
 
 // 获取传入参数
 function getUrlParam(name) {
@@ -38,9 +45,8 @@ function load(name) {
 
 function getResultRelation() {
     let fp = load(result_path);
-    var result_judge = JSON.parse(fp);
-    console.log(result_judge);
-    return result_judge;
+    // console.log(result_judge);
+    return JSON.parse(fp);
 }
 
 function loadResultInfo(userName, schoolName, personalityName_1, personalityName_2) {
@@ -82,17 +88,18 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
 }
 
 function getWxConfig() {
-    $.get("../php/jssdk.php", function (data, status) {
-        console.log(data);
-        var result = data.split(' ');
-        appid = result[0];
-        console.log(appid);
-        timestamp = result[1];
-        noncestr = result[2];
-        signature = result[3];
-
-        setupWxShare()
-    });
+    $.get("../php/jssdk.php", {"name": user_name, "selection": user_selection},
+        function(data){
+            var result = data.split(' ');
+            console.log(result);
+            appid = result[0];
+            console.log(appid);
+            timestamp = result[1];
+            noncestr = result[2];
+            signature = result[3];
+            console.log(result[4]);
+            setupWxShare()
+        });
 }
 
 function setupWxShare() {
@@ -126,7 +133,10 @@ function setupWxShare() {
                 'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage'
             ],
             success: function (res) {
-                alert("checkJsApi" + JSON.stringify(res))
+                alert("checkJsApi success" + JSON.stringify(res))
+            },
+            fail: function (res) {
+                alert("checkJsApi fail" + JSON.stringify(res))
             }
         });
 
@@ -167,9 +177,5 @@ function setupWxShare() {
         // wx.onMenuShareTimeline(share);  // 朋友圈
     });
 }
-
-
-
-
 
 
