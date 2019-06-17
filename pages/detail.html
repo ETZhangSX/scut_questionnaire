@@ -52,6 +52,7 @@
         "SOFTE": 32.5,
     };
     var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+    var u = navigator.userAgent;
 
     function getScreenRation() {
         var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
@@ -73,10 +74,11 @@
         var bottom = button_high_of[schoolName];
         var title = document.createElement("img");
         var text = document.createElement("img");
+        var button = document.getElementById("school_list");
         var offset = 0;
 
         if (!isLongScreen) {
-            offset = -7;
+            offset = -3.5;
             title_ratio = 74;
             title.style.top = -0.5 + "vw";
             // title.style.height = "130vw";
@@ -84,15 +86,24 @@
             title.style.maxWidth = title_ratio + "%";
             title.style.left = (100 - title_ratio) / 2 + "%";
             text.style.bottom = offset + "vw";
+
+            if (u.indexOf("iPhone") > -1) {
+                text.id = "text_iphone";
+                button.id = "school_list_iphone";
+                button.style.bottom = bottom * 0.88 + offset - 0.1 + "vw";
+            }
+            else
+                button.style.bottom = bottom + offset + "vw";
         }
-        document.getElementById("school_list").style.bottom = bottom + offset + "vw";
+        else
+            button.style.bottom = bottom + offset + "vw";
 
         title.src = file_path + "-1.png";
         text.src = file_path + "-2.png";
         title.alt = "#";
         text.alt = "#";
         title.id = "title";
-        text.id = "text";
+        // text.id = "text";
 
         var container = document.getElementById("school_detail");
         container.appendChild(title);

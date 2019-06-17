@@ -1,5 +1,6 @@
-var departmant_img_path = "../resource/list/";
+var department_img_path = "../resource/list/";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+var u = navigator.userAgent;
 
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
@@ -17,11 +18,16 @@ function generate_table() {
 
     for (var i = 1; i < 16; i++) {
         var department_item = document.createElement("div");
-        department_item.className = "department_item";
+
+        if (!isLongScreen && u.indexOf("iPhone") > -1) {
+            department_item.className = "department_item_iphone";
+        }
+        else
+            department_item.className = "department_item";
         // pic.onclick = window.location.href = "detail.html";
         var pic = document.createElement("img");
         pic.setAttribute("onclick", "window.location.href = \"detail.html?school=" + getDepartmentName(i) + "\"");
-        pic.src = departmant_img_path + i + ".png";
+        pic.src = department_img_path + i + ".png";
         pic.className = "department_img";
 
         department_item.appendChild(pic);
@@ -32,17 +38,26 @@ function generate_table() {
     department_right.className = "department_right";
     for (var i = 16; i < 30; i++) {
         var department_item = document.createElement("div");
-        department_item.className = "department_item";
+
+        if (!isLongScreen && u.indexOf("iPhone") > -1) {
+            department_item.className = "department_item_iphone";
+        }
+        else
+            department_item.className = "department_item";
+
         var pic = document.createElement("img");
         pic.setAttribute("onclick", "window.location.href = \"detail.html?school=" + getDepartmentName(i) + "\"");
-        pic.src = departmant_img_path + i + ".png";
+        pic.src = department_img_path + i + ".png";
         pic.className = "department_img";
+
         department_item.appendChild(pic);
         department_right.appendChild(department_item)
     }
     if (!isLongScreen) {
         var translate = 5;
         var offset = 9.5;
+        if (u.indexOf("iPhone") > -1)
+            translate = 3;
         department_left.style.bottom = translate + "vw";
         department_right.style.bottom = translate + offset + "vw";
     }
