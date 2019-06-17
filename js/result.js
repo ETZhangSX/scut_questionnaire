@@ -135,8 +135,8 @@ function setupWxShare() {
         const share = {
             title: '来测测你最适合哪个学院',
             desc: '我刚刚在华工青年测试了适合自己的学院，你也来试试吧！',
-            imgUrl: '../resource/others/share_icon.jpg',
-            link: 'https://scut_questionnaire.100steps.net/pages/index.html',
+            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
+            link: 'https://mp.weixin.qq.com/s/S7ZQLhZAz7FpwDmMEwBCSQ',
         };
 
         wx.error(function () {
