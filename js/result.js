@@ -4,18 +4,11 @@ var result_path = "../resource/result/result.txt";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
 
 // wx需要的数据
-var user_name = "";
-var user_selection = "";
 var appid = "";
 var timestamp = 0;
 var noncestr = "";
 var signature = "";
 var url = "";
-
-function updateUserConfig(name, selection) {
-    user_name = name;
-    user_selection = selection;
-}
 
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
@@ -88,7 +81,10 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
 }
 
 function getWxConfig() {
-    $.get("../php/jssdk.php", {"name": user_name, "selection": user_selection},
+    alert("getting wx config");
+    console.log(location.href.split('#')[0]);
+    console.log(encodeURIComponent(location.href.split('#')[0]));
+    $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
         function(data){
             var result = data.split(' ');
             console.log(result);
