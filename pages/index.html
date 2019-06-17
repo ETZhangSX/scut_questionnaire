@@ -18,9 +18,9 @@
     <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0">
     <div id="img_btn">
         <img id="index_content" src="../resource/others/index_2.png" alt="#">
-        <img src="../resource/others/index_btn1.png" alt="#" style="z-index: 2" onclick="choose_1()">
-        <img src="../resource/others/index_btn2.png" alt="#" style="z-index: 2" onclick="choose_2()">
-        <img src="../resource/others/index_btn3.png" alt="#" style="z-index: 2" onclick="choose_3()">
+        <img class="option_img" src="../resource/others/index_btn1.png" alt="#" style="z-index: 2">
+        <img class="option_img" src="../resource/others/index_btn2.png" alt="#" style="z-index: 2">
+        <img class="option_img" src="../resource/others/index_btn3.png" alt="#" style="z-index: 2">
 
         <button class="options" id="btn1" onclick="choose_num(1)"></button>
         <button class="options" id="btn2" onclick="choose_num(2)"></button>
@@ -67,6 +67,18 @@
         title.style.top = "-2.5vw";
         var content = document.getElementById("index_content");
         content.style.top = "-10vw";
+
+        if (u.indexOf("iPhone") > -1) {
+            var button_img = document.getElementsByClassName("option_img");
+            var buttons = document.getElementsByClassName("options");
+            var offset_y = 20;
+            for (var i in button_img) {
+                console.log(i);
+                button_img[i].style.bottom = "-" + offset_y + "vw";
+                buttons[i].style.setProperty("-webkit-transform", "translate(0, " + offset_y + "vw)");
+            }
+        }
+
     }
 </script>
 </body>
