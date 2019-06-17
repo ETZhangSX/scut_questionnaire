@@ -323,11 +323,14 @@ function createQuestionItem(content) {
     question_title.style.maxHeight = "150%";
     question_title.alt = "#";
     if (!isLongScreen) {
-        if (content["id"] === 1) {
-            question_title.style.bottom = "-18vw";
+        if (u.indexOf("iPhone") > -1) {
+            if (content["id"] === 1)
+                question_title.style.bottom = "-18vw";
+            else
+                question_title.style.bottom = "-23vw";
         }
         else
-            question_title.style.bottom = "-23vw";
+            question_title.style.bottom = "-12vw";
     }
 
     item.appendChild(question_title);
@@ -352,7 +355,7 @@ function createQuestionItem(content) {
                 }
                 else {
                     if (i < 2) {
-                        bg.style.bottom = "-13vw";
+                        bg.style.bottom = "-15vw";
                     }
                     else {
                         bg.style.bottom = "-6vw";

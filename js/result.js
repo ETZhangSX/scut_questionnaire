@@ -2,6 +2,7 @@ var school_img_path = "../resource/result/department/";
 var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
+var u = navigator.userAgent;
 
 // wx需要的数据
 var appid="";
@@ -26,6 +27,7 @@ function getUrlParam(name) {
     return null;
 }
 
+
 // 加载文件
 function load(name) {
     let xhr = new XMLHttpRequest(),
@@ -36,6 +38,8 @@ function load(name) {
     return xhr.status === okStatus ? xhr.responseText : null;
 }
 
+
+// 将读取文件解析为json格式获取题目逻辑的映射关系
 function getResultRelation() {
     let fp = load(result_path);
     var result_judge = JSON.parse(fp);
@@ -43,6 +47,8 @@ function getResultRelation() {
     return result_judge;
 }
 
+
+// 从问卷传参加载结果
 function loadResultInfo(userName, schoolName, personalityName_1, personalityName_2) {
     var name = document.getElementById("user_name");
     console.log(name);
@@ -61,13 +67,26 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
     personality_2.alt = "#";
 
     if (!isLongScreen) {
-        school.className = "school_short";
-        document.getElementById("user_name").style.top = "7vw";
-        document.getElementById("bg_title").style.top = "-15vw";
-        document.getElementById("bg_background").style.bottom = "-6.5vw";
-        document.getElementById("school_btn").style.bottom = "112vw";
-        personality_1.id = "personality_short_1";
-        personality_2.id = "personality_short_2";
+        if (u.indexOf("iPhone") > -1) {
+            school.className = "school_short_iphone";
+            // document.getElementById("user_name").style.top = "6vw";
+            document.getElementById("user_name").id = "user_name_iphone";
+            document.getElementById("bg_title").id = "bg_title_iphone";//.style.top = "-15vw";
+            document.getElementById("bg_background").id = "bg_background_iphone";//.style.bottom = "-11.5vw";
+            document.getElementById("school_btn").style.bottom = "103vw";
+            personality_1.id = "personality_short_iphone_1";
+            personality_2.id = "personality_short_iphone_2";
+        }
+        else {
+            school.className = "school_short";
+            document.getElementById("user_name").style.top = "7vw";
+            document.getElementById("bg_title").style.top = "-15vw";
+            document.getElementById("bg_background").style.bottom = "-6.5vw";
+            document.getElementById("school_btn").style.bottom = "112vw";
+            personality_1.id = "personality_short_1";
+            personality_2.id = "personality_short_2";
+        }
+
     } else {
         personality_1.id = "personality_1";
         personality_2.id = "personality_2";

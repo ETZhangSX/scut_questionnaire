@@ -5,6 +5,8 @@ body {
     background-size: 100% 100%;
     overflow: hidden;
     background-attachment: fixed;
+    --widthRatio: 94%;
+    --leftShift: 3%;
 }
 
 #background_border {
@@ -62,6 +64,14 @@ body {
     position: fixed;
     left: 9.5%;
     bottom: 157vw;
+}
+
+#user_name_iphone {
+    display: block;
+    color: white;
+    position: fixed;
+    top: 4.5vw;
+    left: 14.5%;
     z-index: 2;
 }
 
@@ -69,13 +79,27 @@ body {
     bottom: 5.5vw;
 }
 
+#bg_title_iphone {
+    max-width: var(--widthRatio);
+    left: var(--leftShift);
+    bottom: -8vw;
+}
+
+
+#bg_background_iphone {
+    max-width: var(--widthRatio);
+    left: var(--leftShift);
+    bottom: -10vw;
+}
+
+
 #logo {
     left: -26%;
 }
 
 #qrcode {
     right: 5%;
-    bottom: 4.5vw;
+    bottom: 3.5vw;
     width: 17%;
 }
 
@@ -98,6 +122,12 @@ body {
     top: -4vw;
 }
 
+.school_short_iphone {
+    max-width: var(--widthRatio);
+    left: var(--leftShift);
+    top: -5vw;
+}
+
 #personality_1 {
     bottom: 27.5vw;
 }
@@ -112,4 +142,16 @@ body {
 
 #personality_short_2 {
     bottom: -7vw;
+}
+
+#personality_short_iphone_1 {
+    max-width: var(--widthRatio);
+    left: var(--leftShift);
+    bottom: 15.75vw;
+}
+
+#personality_short_iphone_2 {
+    max-width: var(--widthRatio);
+    left: var(--leftShift);
+    bottom: -10.5vw;
 }
