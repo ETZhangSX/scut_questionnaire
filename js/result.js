@@ -121,7 +121,7 @@ function setupWxShare() {
     console.log("wx setup");
     // 微信分享操作
     wx.config({
-        debug: true,
+        debug: false,
         appId: appid,       // AppId
         timestamp: timestamp,        // 时间戳
         nonceStr: noncestr,     // 随机字符串
@@ -136,7 +136,7 @@ function setupWxShare() {
             title: '来测测你最适合哪个学院',
             desc: '我刚刚在华工青年测试了适合自己的学院，你也来试试吧！',
             imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: 'https://mp.weixin.qq.com/s/S7ZQLhZAz7FpwDmMEwBCSQ',
+            link: 'https://scut_questionnaire.100steps.net/pages/index.html',
         };
 
         wx.error(function () {
