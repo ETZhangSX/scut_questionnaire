@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="background_border"></div>
-<img src="../resource/others/bg_door.png" alt="#" id="background_door">
+<img class="item" src="../resource/others/bg_door.png" alt="#" id="background_door">
 <img src="../resource/others/bg_next.png" alt="#" id="slide_next" style="opacity: 0; z-index: 1;">
 <form id="form" onsubmit="return false">
     <div id="iSlider-wrapper"></div>
@@ -25,6 +25,8 @@
     getScreenRation();
     generateForm();
     list.push(question_list[0]);
+    winHeight = document.documentElement.clientHeight;
+    // console.log(winHeight);
 
     /*
     * 添加回调事件
@@ -49,6 +51,16 @@
         },
         isVertical: true
     });
+
+    window.onresize = function () {
+        var thisHeight = document.documentElement.clientHeight;
+        if (winHeight === thisHeight) {
+            nameTextOnBlur();
+        }
+        else {
+            nameTextOnFocus(winHeight - thisHeight);
+        }
+    }
 </script>
 </body>
 </html>
