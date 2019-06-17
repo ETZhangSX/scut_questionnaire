@@ -6,6 +6,8 @@ body {
     background-size: 100% 100%;
     overflow: hidden;
     background-attachment: fixed;
+    --widthRatio: 88%;
+    --leftShift: 6%;
 }
 
 #background_border {
@@ -57,8 +59,31 @@ body {
     left: 16.3%;
 }
 
+
 #school_list:active {
     opacity: 0.3;
+}
+
+#school_list_iphone {
+    border-radius: 1.5vw;
+    display: block;
+    position: absolute;
+    background: black;
+    opacity: 0;
+    z-index: 3;
+    outline: none;
+    width: 63.5%;
+    height: 9vw;
+    left: 20.3%;
+}
+
+#school_list_iphone:active {
+    opacity: 0.3;
+}
+
+#text_iphone {
+    width: var(--widthRatio);
+    left: var(--leftShift);
 }
 
 #logo {

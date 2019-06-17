@@ -30,6 +30,7 @@ body {
 
 #logo {
     left: 30%;
+    bottom: -3vw;
 }
 
 .background_img {
@@ -64,8 +65,12 @@ body {
 }
 
 .department_item {
-    height: 5%;
     padding-bottom: 2.5vw;
+}
+
+.department_item_iphone {
+    height: 5%;
+    padding-bottom: 1.9vw;
 }
 
 .department_img {
