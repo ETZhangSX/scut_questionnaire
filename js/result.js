@@ -1,4 +1,3 @@
-
 var school_img_path = "../resource/result/department/";
 var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
@@ -108,9 +107,10 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
 function getWxConfig() {
     console.log("getting wx config");
     console.log(location.href.split('#')[0]);
-    var path = location.href.split('#')[0].replace("http://", "");
+    var path = location.href.split('#')[0].replace("https://", "");
+    console.log(path);
     console.log(encodeURIComponent(location.href.split('#')[0]));
-    $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
+    $.get("../php/jssdk.php", {"url": path},
         function(data){
             var result = data.split(' ');
             console.log(result);
@@ -124,18 +124,16 @@ function getWxConfig() {
         });
 }
 
-
-
 function setupWxShare() {
     console.log("wx setup");
     // 微信分享操作
     wx.config({
-        debug: false,
+        debug: true,
         appId: appid,       // AppId
         timestamp: timestamp,        // 时间戳
         nonceStr: noncestr,     // 随机字符串
         signature: signature,       // 签名
-        jsApiList: ['checkJsApi', 'openLocation', 'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage']
+        jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage']
     });
 
     wx.ready(function () {
@@ -146,7 +144,7 @@ function setupWxShare() {
             title: '我最合适的学院竟然是' + depart + '？ | 华工青年',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
             imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: window.location["href"] ,//'https://scut_questionnaire.100steps.net/pages/index.html',
+            link: window.location["href"].replace("https://", "")
         };
 
         wx.error(function () {
@@ -171,14 +169,17 @@ function setupWxShare() {
             link: share['link'],
             imgUrl: share['imgUrl'],
             success: function (res) {
-                console.log("wxshare setup success." + res)
+                console.log("detail: wxshare setup success.");
+                console.log(res);
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
             fail: function (res) {
-                console.log("wxshare setup fail." + res)
+                console.log("detail: wxshare setup fail.");
+                console.log(res);
             },
             cancel: function (res) {
-                console.log("wxshare setup cancel" + res)
+                console.log("detail: wxshare setup cancel");
+                console.log(res);
             }
         });
 
@@ -187,14 +188,17 @@ function setupWxShare() {
             link: share['link'],
             imgUrl: share['imgUrl'],
             success: function (res) {
-                console.log("wxshare setup success." + res)
+                console.log("detail: wxshare setup success.");
+                console.log(res);
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
             fail: function (res) {
-                console.log("wxshare setup fail." + res)
+                console.log("detail: wxshare setup fail.");
+                console.log(res);
             },
             cancel: function (res) {
-                console.log("wxshare setup cancel" + res)
+                console.log("detail: wxshare setup cancel");
+                console.log(res);
             }
         })
 
