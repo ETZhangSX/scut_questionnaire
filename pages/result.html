@@ -11,6 +11,7 @@
     <script src="../node_modules/islider.js"></script>
     <script src="../js/result.js"></script>
     <script src="../js/list.js"></script>
+    <script type="text/javascript" src="../node_modules/html2canvas/dist/html2canvas.js"></script>
     <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
@@ -21,47 +22,87 @@
         您的名字
     </h4>
     <button class="detail_button" id="school_btn" onclick="window.location.href='detail.html'"></button>
-    <img src="../resource/result/bg_1.png" alt="#" id="bg_title">
-    <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0">
-    <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo">
-    <img src="../resource/result/bg_2.png" alt="#" id="bg_background">
-    <img src="../resource/others/qrcode_text.png" alt="#">
-    <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode">
+    <img src="../resource/result/bg_1.png?randomstring" alt="#" id="bg_title" crossorigin="anonymous">
+    <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0" crossorigin="anonymous">
+    <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo" crossorigin="anonymous">
+    <img src="../resource/result/bg_2.png" alt="#" id="bg_background" crossorigin="anonymous">
+    <img src="../resource/others/qrcode_text.png" alt="#" crossorigin="anonymous">
+    <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode" crossorigin="anonymous">
+    <button class="share" id="share_btn" onclick="onShareImg()" style="z-index: 4">点击分享</button>
+    <div id="share_bg" style="z-index: 5"></div>
+    <img id="share_guide" src="../resource/others/share_tip.png" onclick="onShareClose(this)" alt="#" style="z-index: 6">
 </div>
 
 <div class="result" id="result_img">
 </div>
+<!--<script type="module">-->
+<!--    import html2canvas from "html2canvas";-->
+
+<!--</script>-->
 <script>
+
+    function onShareImg() {
+        document.getElementById("share_bg").style.display = "block";
+        document.getElementById("share_guide").style.display = "block";
+        // html2canvas(document.body, {useCORS:true}).then(canvas => {
+        //     canvas.height = document.documentElement.clientHeight;
+        //     canvas.width = document.documentElement.clientWidth;
+        //     var bg = document.createElement("div");
+        //     bg.style.background = "white";
+        //     bg.style.width = "100%";
+        //     bg.style.height = "100%";
+        //     bg.style.left = "0";
+        //     bg.style.bottom = "0";
+        //     bg.style.display = "block";
+        //     bg.style.position = "fixed";
+        //     bg.style.setProperty("z-index", "5");
+        //     canvas.style.setProperty("z-index", "6");
+        //     // var targetImg = document.createElement("img");
+        //     // targetImg.setAttribute('src', canvas.toDataURL());
+        //     // targetImg.style.setProperty("z-index", "5");
+        //     // document.body.appendChild(canvas);
+        //     bg.appendChild(canvas);
+        //     document.body.appendChild(bg);
+        // });
+    }
+
+    function onShareClose(obj) {
+        console.log("onShareClose");
+        obj.style.display = "none";
+        document.getElementById("share_bg").style.display = "none";
+    }
+
     console.log(window.location["href"]);
     var name = getUrlParam("name");
     var user_answer = getUrlParam("user_answer");
     var share = false;
-    if (getUrlParam("share") == "true") {
+    if (getUrlParam("share") === "true") {
         share = true;
     }
 
     console.log(name);
     console.log(user_answer);
     getScreenRation();
-    if (name != null && user_answer != null) {
-        var resultMap = getResultRelation();
-        if (resultMap.hasOwnProperty(user_answer)) {
-            var result = resultMap[user_answer];
-            loadResultInfo(name, result["depart"], result["first"], result["second"]);
-            setDepart(getDepartment(result["depart"]));
-            document.getElementById("school_btn").setAttribute("onclick", "window.location.href='detail.html?school=" + result["depart"] + "'")
-        } else {
-            loadResultInfo(name, "CS", "1", "2");
-            setDepart(getDepartment("CS"));
-        }
-    }
+    loadResultInfo("CJJ", "CS", "1", "2");
+    // if (name != null && user_answer != null) {
+    //     var resultMap = getResultRelation();
+    //     if (resultMap.hasOwnProperty(user_answer)) {
+    //         var result = resultMap[user_answer];
+    //         loadResultInfo(name, result["depart"], result["first"], result["second"]);
+    //         setDepart(getDepartment(result["depart"]));
+    //         document.getElementById("school_btn").setAttribute("onclick", "window.location.href='detail.html?school=" + result["depart"] + "'")
+    //     } else {
+    //         loadResultInfo(name, "CS", "1", "2");
+    //         setDepart(getDepartment("CS"));
+    //     }
+    // }
     // if (share) {
     //     document.getElementsByClassName("detail_button")[0].style.display = "none";
     // }
 
-    $(document).ready(function () {
-        getWxConfig();
-    })
+    // $(document).ready(function () {
+    //     getWxConfig();
+    // })
 
 </script>
 </body>

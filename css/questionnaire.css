@@ -52,6 +52,7 @@ body {
     width: 100%;
     position: fixed;
     bottom: 0;
+    pointer-events: none;
 }
 
 /*单选按钮及其绑定标签样式*/

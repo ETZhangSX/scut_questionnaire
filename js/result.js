@@ -1,3 +1,4 @@
+
 var school_img_path = "../resource/result/department/";
 var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
@@ -121,6 +122,8 @@ function getWxConfig() {
             setupWxShare()
         });
 }
+
+
 
 function setupWxShare() {
     console.log("wx setup");
