@@ -155,7 +155,7 @@ function setupWxShare() {
             title: '我最合适的学院竟然是' + depart + '？ | 华工青年',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
             imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: window.location["href"].replace("https://", "")
+            link: window.location["href"]
         };
 
         wx.error(function () {
@@ -176,7 +176,7 @@ function setupWxShare() {
             }
         });
 
-        wx.updateAppMessageShareData({
+        wx.onMenuShareAppMessage({
             title: share['title'],
             desc: share['desc'],
             link: share['link'],
@@ -196,7 +196,7 @@ function setupWxShare() {
             }
         });
 
-        wx.updateTimelineShareData({
+        wx.onMenuShareTimeline({
             title: share['title'],
             link: share['link'],
             imgUrl: share['imgUrl'],
