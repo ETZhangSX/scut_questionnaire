@@ -53,14 +53,10 @@ function setupWxShare() {
         console.log(depart);
 
         const share = {
-            title: '我最合适的学院竟然是？？？',
+            title: '我最合适的学院竟然是' + depart + '？ | 华工青年',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
-            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: 'https://scut_questionnaire.100steps.net/pages/index.html',
-            // title: '我最合适的学院竟然是' + depart + '？  | 华工青年',
-            // desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
-            // imgUrl: 'scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            // link: window.location["href"].replace("https://", ""),
+            imgUrl: '../resource/others/share_icon.jpg',
+            link: window.location["href"]
         };
 
         wx.checkJsApi({
