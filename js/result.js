@@ -138,7 +138,7 @@ function getWxConfig() {
                 timestamp: timestamp,        // 时间戳
                 nonceStr: noncestr,     // 随机字符串
                 signature: signature,       // 签名
-                jsApiList: ['checkJsApi', 'updateTimelineShareData', 'onMenuShareAppMessage']
+                jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage']
             });
 
             setupWxShare()
@@ -162,7 +162,7 @@ function setupWxShare() {
 
         wx.checkJsApi({
             jsApiList: [
-                'updateTimelineShareData', 'onMenuShareAppMessage'
+                'onMenuShareTimeline', 'onMenuShareAppMessage'
             ],
             success: function (res) {
                 console.log("checkJsApi success.");
@@ -174,25 +174,25 @@ function setupWxShare() {
             }
         });
 
-        wx.updateTimelineShareData({
-            title: share['title'],
-            link: share['link'],
-            imgUrl: share['imgUrl'],
-            success: function (res) {
-                console.log("result: wxshare setup success.");
-                console.log(res);
-                onShareClose(document.getElementById('share_guide'));
-            },
-            fail: function (res) {
-                console.log("result: wxshare setup fail.");
-                console.log(res);
-            },
-            cancel: function (res) {
-                console.log("result: wxshare setup cancel");
-                console.log(res);
-            }
-
-        });
+        // wx.updateTimelineShareData({
+        //     title: share['title'],
+        //     link: share['link'],
+        //     imgUrl: share['imgUrl'],
+        //     success: function (res) {
+        //         console.log("result: wxshare setup success.");
+        //         console.log(res);
+        //         onShareClose(document.getElementById('share_guide'));
+        //     },
+        //     fail: function (res) {
+        //         console.log("result: wxshare setup fail.");
+        //         console.log(res);
+        //     },
+        //     cancel: function (res) {
+        //         console.log("result: wxshare setup cancel");
+        //         console.log(res);
+        //     }
+        //
+        // });
 
         wx.onMenuShareAppMessage({
             title: share['title'],
@@ -214,24 +214,24 @@ function setupWxShare() {
             }
         });
 
-        // wx.onMenuShareTimeline({
-        //     title: share['title'],
-        //     link: share['link'],
-        //     imgUrl: share['imgUrl'],
-        //     success: function (res) {
-        //         console.log("result: wxshare setup success.");
-        //         console.log(res);
-        //         onShareClose(document.getElementById('share_guide'));
-        //     },
-        //     fail: function (res) {
-        //         console.log("result: wxshare setup fail.");
-        //         console.log(res);
-        //     },
-        //     cancel: function (res) {
-        //         console.log("result: wxshare setup cancel");
-        //         console.log(res);
-        //     }
-        // })
+        wx.onMenuShareTimeline({
+            title: share['title'],
+            link: share['link'],
+            imgUrl: share['imgUrl'],
+            success: function (res) {
+                console.log("result: wxshare setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            fail: function (res) {
+                console.log("result: wxshare setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: wxshare setup cancel");
+                console.log(res);
+            }
+        })
 
     });
 
