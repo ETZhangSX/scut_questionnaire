@@ -162,7 +162,7 @@ function setupWxShare() {
 
         wx.checkJsApi({
             jsApiList: [
-                'onMenuShareTimeline', 'onMenuShareAppMessage'
+                'updateTimelineShareData', 'onMenuShareAppMessage'
             ],
             success: function (res) {
                 console.log("checkJsApi success.");
