@@ -120,8 +120,8 @@ function onShareClose(obj) {
 function getWxConfig() {
     console.log("getting wx config");
     console.log(location.origin);
-    console.log(encodeURIComponent(location.href.split('#')[0]));
-    $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
+    console.log(encodeURIComponent(location.href));
+    $.get("../php/jssdk.php", {"url": location.href},
         function(data){
             var result = data.split(' ');
             console.log(result);
@@ -198,7 +198,7 @@ function setupWxShare() {
             title: share['title'],
             desc: share['desc'],
             link: share['link'],
-            imgUrl: share['imgUrl'],
+            imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
                 console.log(res);
@@ -217,7 +217,7 @@ function setupWxShare() {
         wx.onMenuShareTimeline({
             title: share['title'],
             link: share['link'],
-            imgUrl: share['imgUrl'],
+            imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
                 console.log(res);
