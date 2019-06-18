@@ -35,9 +35,8 @@
 |**27.医学院**|School of Medicine|MEDIC|
 |**28.艺术学院**|School of Art|ART|
 |**29.自动化科学与工程学院**|School of Automation Science and Engineering|AUTOSE|
-||||
-|**吴贤铭智能工程学院**|Shien-Ming Wu School of Intelligent Engineering|SMWIE|
-|**分子科学与工程学院**|School of Molecular and Engineering|MOLECUL|
+|**30.分子科学与工程学院**|School of Molecular and Engineering|MOLE|
+|**31.吴贤铭智能工程学院**|Shien-Ming Wu School of Intelligent Engineering|WXM|
 
 人格编号
 

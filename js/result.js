@@ -108,6 +108,7 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
 function getWxConfig() {
     console.log("getting wx config");
     console.log(location.href.split('#')[0]);
+    var path = location.href.split('#')[0].replace("http://", "");
     console.log(encodeURIComponent(location.href.split('#')[0]));
     $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
         function(data){
@@ -145,7 +146,7 @@ function setupWxShare() {
             title: '我最合适的学院竟然是' + depart + '？ | 华工青年',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
             imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: window.location["href"] + "&share=true" ,//'https://scut_questionnaire.100steps.net/pages/index.html',
+            link: window.location["href"] ,//'https://scut_questionnaire.100steps.net/pages/index.html',
         };
 
         wx.error(function () {
