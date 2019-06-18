@@ -21,7 +21,7 @@ function getWxConfig() {
     var path = location.href.split('#')[0].replace("https://", "");
     console.log(path);
     console.log(encodeURIComponent(location.href.split('#')[0]));
-    $.get("../php/jssdk.php", {"url": path},
+    $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
         function (data) {
             var result = data.split(' ');
             console.log(result);
