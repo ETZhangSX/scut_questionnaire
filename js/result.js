@@ -138,7 +138,7 @@ function getWxConfig() {
                 timestamp: timestamp,        // 时间戳
                 nonceStr: noncestr,     // 随机字符串
                 signature: signature,       // 签名
-                jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage']
+                jsApiList: ['checkJsApi', 'updateTimelineShareData', 'onMenuShareAppMessage']
             });
 
             setupWxShare()
