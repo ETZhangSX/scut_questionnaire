@@ -101,9 +101,9 @@ function setupWxShare() {
         console.log("wx ready.");
 
         const share = {
-            title: '测测你最适合那个学院？',
+            title: '测测你最适合那个学院？ | 华工青年',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
-            imgUrl: '../resource/others/share_icon.jpg',
+            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
             link: 'https://scut_questionnaire.100steps.net/pages/index.html',
         };
 

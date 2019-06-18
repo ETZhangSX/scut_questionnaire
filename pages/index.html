@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/bootstrap.js"></script>
     <script src="../js/index.js"></script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
@@ -75,7 +75,7 @@
             var button_img = document.getElementsByClassName("option_img");
             var buttons = document.getElementsByClassName("options");
             var offset_y = 20;
-            for (var i in button_img) {
+            for (var i = 0; i < 3; i++) {
                 console.log(i);
                 button_img[i].style.bottom = "-" + offset_y + "vw";
                 buttons[i].style.setProperty("-webkit-transform", "translate(0, " + offset_y + "vw)");
