@@ -178,7 +178,7 @@ function setupWxShare() {
             title: share['title'],
             desc: share['desc'],
             link: share['link'],
-            img_url: share['imgUrl'],
+            imgUrl: share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
                 console.log(res);
@@ -197,7 +197,7 @@ function setupWxShare() {
         wx.onMenuShareTimeline({
             title: share['title'],
             link: share['link'],
-            img_url: share['imgUrl'],
+            imgUrl: share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
                 console.log(res);
