@@ -21,6 +21,7 @@
         您的名字
     </h4>
     <button class="detail_button" id="school_btn" onclick="window.location.href='detail.html'"></button>
+    <img src="../resource/others/share_icon.png" width="0" height="0">
     <img src="../resource/result/bg_1.png?randomstring" alt="#" id="bg_title" crossorigin="anonymous">
     <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0" crossorigin="anonymous">
     <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo" crossorigin="anonymous">
@@ -52,11 +53,11 @@
         if (resultMap.hasOwnProperty(user_answer)) {
             var result = resultMap[user_answer];
             loadResultInfo(name, result["depart"], result["first"], result["second"]);
-            setDepart(getDepartment(result["depart"]));
+            setWxConfig(name, getDepartment(result["depart"]));
             document.getElementById("school_btn").setAttribute("onclick", "window.location.href='detail.html?school=" + result["depart"] + "'")
         } else {
             loadResultInfo(name, "CS", "1", "2");
-            setDepart(getDepartment("CS"));
+            setWxConfig(name, getDepartment("CS"));
         }
     }
     // if (share) {
