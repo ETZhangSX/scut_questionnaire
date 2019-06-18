@@ -53,8 +53,8 @@ function setupWxShare() {
         const share = {
             title: '我最合适的学院竟然是\n' + depart + '？',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
-            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
-            link: 'https://mp.weixin.qq.com/s/S7ZQLhZAz7FpwDmMEwBCSQ'
+            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.png',
+            link: window.location["href"]
         };
 
         wx.checkJsApi({
