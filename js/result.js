@@ -155,7 +155,7 @@ function setupWxShare() {
         const share = {
             title: name + '最合适的学院竟然是' + depart + '？',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
-            imgUrl: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.png',
+            img_url: 'https://scut_questionnaire.100steps.net/resource/others/share_icon.png',
             link: window.location["href"]
         };
 
@@ -178,7 +178,7 @@ function setupWxShare() {
             title: share['title'],
             desc: share['desc'],
             link: share['link'],
-            imgUrl: share['imgUrl'],
+            img_url: share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
                 console.log(res);
