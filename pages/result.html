@@ -15,13 +15,14 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-<img src="../resource/others/share_icon.png" width="120" height="120" alt="#" style="display: none;">
+<img src="https://scut_questionnaire.100steps.net/resource/others/share_icon.png" alt="#" style="position: relative; left: -999px">
 <div id="background_border"></div>
 <div class="background_img">
     <h4 id="user_name" style="z-index: 2">
         您的名字
     </h4>
     <button class="detail_button" id="school_btn" onclick="window.location.href='detail.html'"></button>
+    <img src="../resource/others/share_icon.png" width="0" height="0">
     <img src="../resource/result/bg_1.png?randomstring" alt="#" id="bg_title" crossorigin="anonymous">
     <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0" crossorigin="anonymous">
     <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo" crossorigin="anonymous">
@@ -30,8 +31,7 @@
     <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode" crossorigin="anonymous">
     <button class="share" id="share_btn" onclick="onShareImg()" style="z-index: 4">点击分享</button>
     <div id="share_bg" style="z-index: 5"></div>
-    <img id="share_guide" src="../resource/others/share_tip.png" onclick="onShareClose(this)" alt="#"
-         style="z-index: 6">
+    <img id="share_guide" src="../resource/others/share_tip.png" onclick="onShareClose(this)" alt="#" style="z-index: 6">
 </div>
 
 <div class="result" id="result_img"></div>
@@ -40,7 +40,7 @@
 
 <!--</script>-->
 <script>
-
+    $.ajax();
     console.log(window.location["href"]);
     var name = getUrlParam("name");
     var user_answer = getUrlParam("user_answer");
