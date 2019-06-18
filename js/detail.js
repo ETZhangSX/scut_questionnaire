@@ -88,7 +88,7 @@ function setupWxShare() {
             success: function (res) {
                 console.log("detail: wxshare setup success.");
                 console.log(res);
-                // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
+                onShareClose(document.getElementById('share_guide'));
             },
             fail: function (res) {
                 console.log("detail: wxshare setup fail.");
@@ -107,7 +107,7 @@ function setupWxShare() {
             success: function (res) {
                 console.log("detail: wxshare setup success.");
                 console.log(res);
-                // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
+                onShareClose(document.getElementById('share_guide'));
             },
             fail: function (res) {
                 console.log("detail: wxshare setup fail.");
