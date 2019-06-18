@@ -54,13 +54,13 @@ body {
 
 .department_right {
     left: 51%;
-    bottom: 29.5vw;
+    bottom: 19.5vw;
     position: absolute;
 }
 
 .department_left {
     left: 6%;
-    bottom: 20vw;
+    bottom: 10vw;
     position: absolute;
 }
 
@@ -70,7 +70,7 @@ body {
 
 .department_item_iphone {
     height: 5%;
-    padding-bottom: 1.9vw;
+    padding-bottom: 1.3vw;
 }
 
 .department_img {

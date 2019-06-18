@@ -16,7 +16,7 @@ function generate_table() {
     var department_left = document.createElement("div");
     department_left.className = "department_left";
 
-    for (var i = 1; i < 16; i++) {
+    for (var i = 1; i < 17; i++) {
         var department_item = document.createElement("div");
 
         if (!isLongScreen && u.indexOf("iPhone") > -1) {
@@ -36,7 +36,7 @@ function generate_table() {
 
     var department_right = document.createElement("div");
     department_right.className = "department_right";
-    for (var i = 16; i < 30; i++) {
+    for (var i = 17; i < 32; i++) {
         var department_item = document.createElement("div");
 
         if (!isLongScreen && u.indexOf("iPhone") > -1) {
@@ -97,6 +97,8 @@ function getDepartmentName(i){
         case 27: return "MEDIC";
         case 28: return "ART";
         case 29: return "AUTOSE";
+        case 30: return "MOLE";
+        case 31: return "WXM";
     }
 }
 

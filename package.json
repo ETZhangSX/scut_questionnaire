@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "html2canvas": "^1.0.0-rc.3",
     "islider.js": "^2.2.5"
   }
 }
