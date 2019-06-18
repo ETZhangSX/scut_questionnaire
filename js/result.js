@@ -174,6 +174,26 @@ function setupWxShare() {
             }
         });
 
+        wx.updateTimelineShareData({
+            title: share['title'],
+            link: share['link'],
+            imgUrl: share['imgUrl'],
+            success: function (res) {
+                console.log("result: wxshare setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            fail: function (res) {
+                console.log("result: wxshare setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: wxshare setup cancel");
+                console.log(res);
+            }
+
+        });
+
         wx.onMenuShareAppMessage({
             title: share['title'],
             desc: share['desc'],
@@ -194,24 +214,24 @@ function setupWxShare() {
             }
         });
 
-        wx.onMenuShareTimeline({
-            title: share['title'],
-            link: share['link'],
-            imgUrl: share['imgUrl'],
-            success: function (res) {
-                console.log("result: wxshare setup success.");
-                console.log(res);
-                onShareClose(document.getElementById('share_guide'));
-            },
-            fail: function (res) {
-                console.log("result: wxshare setup fail.");
-                console.log(res);
-            },
-            cancel: function (res) {
-                console.log("result: wxshare setup cancel");
-                console.log(res);
-            }
-        })
+        // wx.onMenuShareTimeline({
+        //     title: share['title'],
+        //     link: share['link'],
+        //     imgUrl: share['imgUrl'],
+        //     success: function (res) {
+        //         console.log("result: wxshare setup success.");
+        //         console.log(res);
+        //         onShareClose(document.getElementById('share_guide'));
+        //     },
+        //     fail: function (res) {
+        //         console.log("result: wxshare setup fail.");
+        //         console.log(res);
+        //     },
+        //     cancel: function (res) {
+        //         console.log("result: wxshare setup cancel");
+        //         console.log(res);
+        //     }
+        // })
 
     });
 
