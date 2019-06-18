@@ -169,16 +169,16 @@ function setupWxShare() {
             link: share['link'],
             imgUrl: share['imgUrl'],
             success: function (res) {
-                console.log("detail: wxshare setup success.");
+                console.log("result: wxshare setup success.");
                 console.log(res);
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
             fail: function (res) {
-                console.log("detail: wxshare setup fail.");
+                console.log("result: wxshare setup fail.");
                 console.log(res);
             },
             cancel: function (res) {
-                console.log("detail: wxshare setup cancel");
+                console.log("result: wxshare setup cancel");
                 console.log(res);
             }
         });
@@ -188,16 +188,16 @@ function setupWxShare() {
             link: share['link'],
             imgUrl: share['imgUrl'],
             success: function (res) {
-                console.log("detail: wxshare setup success.");
+                console.log("result: wxshare setup success.");
                 console.log(res);
                 // hideMaskLayer();  // 分享成功，隐藏引导用户分享的浮层
             },
             fail: function (res) {
-                console.log("detail: wxshare setup fail.");
+                console.log("result: wxshare setup fail.");
                 console.log(res);
             },
             cancel: function (res) {
-                console.log("detail: wxshare setup cancel");
+                console.log("result: wxshare setup cancel");
                 console.log(res);
             }
         })
