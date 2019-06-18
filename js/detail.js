@@ -31,21 +31,22 @@ function getWxConfig() {
             noncestr = result[2];
             signature = result[3];
             console.log(result[4]);
+
+            wx.config({
+                debug: true,
+                appId: appid,       // AppId
+                timestamp: timestamp,        // 时间戳
+                nonceStr: noncestr,     // 随机字符串
+                signature: signature,       // 签名
+                jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage']
+            });
+
             setupWxShare()
         });
 }
 
 function setupWxShare() {
-    console.log("wx setup");
-    // 微信分享操作
-    wx.config({
-        debug: true,
-        appId: appid,       // AppId
-        timestamp: timestamp,        // 时间戳
-        nonceStr: noncestr,     // 随机字符串
-        signature: signature,       // 签名
-        jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage']
-    });
+    console.log("wx setup callback");
 
     wx.ready(function () {
         console.log("wx ready.");
@@ -61,10 +62,6 @@ function setupWxShare() {
             // imgUrl: 'scut_questionnaire.100steps.net/resource/others/share_icon.jpg',
             // link: window.location["href"].replace("https://", ""),
         };
-
-        wx.error(function () {
-            console.log("wx error");
-        });
 
         wx.checkJsApi({
             jsApiList: [
@@ -119,5 +116,10 @@ function setupWxShare() {
             }
         })
 
+    });
+
+    wx.error(function (res) {
+        console.log("wx error");
+        console.log(res);
     });
 }
