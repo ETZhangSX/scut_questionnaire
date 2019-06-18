@@ -20,6 +20,9 @@
     <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode">
     <img src="../resource/others/bg_scut.png" alt="#" id="logo">
     <button id="school_list" onclick="window.location.href='list.html'" ></button>
+    <button class="share" id="share_btn" onclick="onShareImg()" style="z-index: 4">点击分享</button>
+    <div id="share_bg" style="z-index: 5"></div>
+    <img id="share_guide" src="../resource/others/share_tip.png" onclick="onShareClose(this)" alt="#" style="z-index: 6">
 </div>
 <div id="school_detail"></div>
 <script id="show-code">

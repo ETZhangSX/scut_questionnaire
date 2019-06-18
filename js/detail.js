@@ -4,6 +4,17 @@ function setDepart(d) {
     depart = d;
 }
 
+function onShareImg() {
+    document.getElementById("share_bg").style.display = "block";
+    document.getElementById("share_guide").style.display = "block";
+}
+
+function onShareClose(obj) {
+    console.log("onShareClose");
+    obj.style.display = "none";
+    document.getElementById("share_bg").style.display = "none";
+}
+
 function getWxConfig() {
     console.log("getting wx config");
     console.log(location.href.split('#')[0]);
@@ -57,13 +68,15 @@ function setupWxShare() {
 
         wx.checkJsApi({
             jsApiList: [
-                'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage'
+                'onMenuShareTimeline', 'onMenuShareAppMessage'
             ],
             success: function (res) {
-                console.log("checkJsApi success" + JSON.stringify(res))
+                console.log("checkJsApi success");
+                console.log(res);
             },
             fail: function (res) {
-                console.log("checkJsApi fail" + JSON.stringify(res))
+                console.log("checkJsApi fail");
+                console.log(res)
             }
         });
 

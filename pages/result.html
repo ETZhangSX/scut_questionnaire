@@ -39,17 +39,6 @@
 <!--</script>-->
 <script>
 
-    function onShareImg() {
-        document.getElementById("share_bg").style.display = "block";
-        document.getElementById("share_guide").style.display = "block";
-    }
-
-    function onShareClose(obj) {
-        console.log("onShareClose");
-        obj.style.display = "none";
-        document.getElementById("share_bg").style.display = "none";
-    }
-
     console.log(window.location["href"]);
     var name = getUrlParam("name");
     var user_answer = getUrlParam("user_answer");
