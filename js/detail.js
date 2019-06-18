@@ -33,7 +33,7 @@ function getWxConfig() {
             console.log(result[4]);
 
             wx.config({
-                debug: true,
+                debug: false,
                 appId: appid,       // AppId
                 timestamp: timestamp,        // 时间戳
                 nonceStr: noncestr,     // 随机字符串
