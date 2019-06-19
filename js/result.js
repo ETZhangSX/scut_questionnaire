@@ -18,12 +18,14 @@ function setWxConfig(n, d) {
     depart = d;
 }
 
+
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
     console.log(ratio);
     if (ratio < (16 / 9)) isLongScreen = false;
     console.log(isLongScreen);
 }
+
 
 // 获取传入参数
 function getUrlParam(name) {
