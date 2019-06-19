@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 php/config.php
+php/access_token.php
+php/jsapi_ticket.php
