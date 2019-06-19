@@ -108,7 +108,55 @@ function setupWxShare() {
                 console.log("detail: wxshare setup cancel");
                 console.log(res);
             }
-        })
+        });
+
+        wx.onMenuShareQQ({
+            title: share['title'],
+            desc: share['desc'],
+            // link: share['link'],
+            imgUrl: location.origin + share['imgUrl'],
+            success: function (res) {
+                console.log("result: wxshare setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            cancel: function (res) {
+                console.log("result: wxshare setup cancel");
+                console.log(res);
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: share['title'],
+            desc: share['desc'],
+            // link: share['link'],
+            imgUrl: location.origin + share['imgUrl'],
+            success: function (res) {
+                console.log("result: wxshare setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            cancel: function (res) {
+                console.log("result: wxshare setup cancel");
+                console.log(res);
+            }
+        });
+
+        wx.onMenuShareQZone({
+            title: share['title'],
+            desc: share['desc'],
+            // link: share['link'],
+            imgUrl: location.origin + share['imgUrl'],
+            success: function (res) {
+                console.log("result: wxshare setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            cancel: function (res) {
+                console.log("result: wxshare setup cancel");
+                console.log(res);
+            }
+        });
 
     });
 
