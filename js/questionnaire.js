@@ -488,7 +488,7 @@ function submitForm() {
     var name = document.getElementById("name-text").value;
     console.log(name);
     // 使用encodeURI编码，用于解决中文传参乱码的问题
-    url = "result1.html?name=" + encodeURI(name) + "&user_answer=" + user_answer;
+    url = "result.html?name=" + encodeURI(name) + "&user_answer=" + user_answer;
     console.log(url);
     // sleep(3000);
     // document.getElementById("form").setAttribute("action", url);
