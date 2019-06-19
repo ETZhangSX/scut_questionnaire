@@ -3,6 +3,7 @@ var personality_img_path = "../resource/result/personality/";
 var result_path = "../resource/result/result.txt";
 var isLongScreen = true;                // 是否为长屏幕，以16:9为基准判断
 var u = navigator.userAgent;
+var randomString = "?random";
 
 // wx需要的数据
 var appid = "";
@@ -18,12 +19,14 @@ function setWxConfig(n, d) {
     depart = d;
 }
 
+
 function getScreenRation() {
     var ratio = document.documentElement.clientHeight / document.documentElement.clientWidth;
     console.log(ratio);
     if (ratio < (16 / 9)) isLongScreen = false;
     console.log(isLongScreen);
 }
+
 
 // 获取传入参数
 function getUrlParam(name) {
@@ -63,10 +66,10 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
     var school = document.createElement("img");
     var personality_1 = document.createElement("img");
     var personality_2 = document.createElement("img");
-
-    school.src = school_img_path + schoolName + ".png";
-    personality_1.src = personality_img_path + personalityName_1 + ".png";
-    personality_2.src = personality_img_path + personalityName_2 + ".png";
+    var imgType = ".png" + randomString;
+    school.src = school_img_path + schoolName + imgType;
+    personality_1.src = personality_img_path + personalityName_1 + imgType;
+    personality_2.src = personality_img_path + personalityName_2 + imgType;
 
     school.alt = "#";
     personality_1.alt = "#";
