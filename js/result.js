@@ -156,7 +156,7 @@ function setupWxShare() {
             title: name + '最合适的学院竟然是' + depart + '？',
             desc: '我刚刚在华工青年测试了最适合自己的学院，你也来试试吧！',
             imgUrl: '/resource/others/share_icon.jpg',
-            link: window.location["href"]
+            // link: window.location["href"]
         };
 
 
@@ -197,7 +197,7 @@ function setupWxShare() {
         wx.onMenuShareAppMessage({
             title: share['title'],
             desc: share['desc'],
-            link: share['link'],
+            // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
@@ -216,7 +216,7 @@ function setupWxShare() {
 
         wx.onMenuShareTimeline({
             title: share['title'],
-            link: share['link'],
+            // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
                 console.log("result: wxshare setup success.");
