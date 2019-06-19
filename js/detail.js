@@ -71,7 +71,7 @@ function setupWxShare() {
             }
         });
 
-        wx.onMenuShareAppMessage({
+        wx.updateAppMessageShareData({
             title: share['title'],
             desc: share['desc'],
             // link: share['link'],
@@ -91,7 +91,7 @@ function setupWxShare() {
             }
         });
 
-        wx.onMenuShareTimeline({
+        wx.updateTimelineShareData({
             title: share['title'],
             // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
