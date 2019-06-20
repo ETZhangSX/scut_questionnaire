@@ -141,7 +141,7 @@ function getWxConfig() {
                 timestamp: timestamp,        // 时间戳
                 nonceStr: noncestr,     // 随机字符串
                 signature: signature,       // 签名
-                jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage']
+                jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
             });
 
             setupWxShare()
@@ -161,7 +161,6 @@ function setupWxShare() {
             imgUrl: '/resource/others/share_icon.jpg',
             // link: window.location["href"]
         };
-
 
         wx.checkJsApi({
             jsApiList: [
@@ -214,8 +213,67 @@ function setupWxShare() {
                 console.log("result: onMenuShareTimeline setup cancel");
                 console.log(res);
             }
-        })
+        });
 
+        wx.onMenuShareQQ({
+            title: share['title'],
+            desc: share['desc'],
+            // link: share['link'],
+            imgUrl: location.origin + share['imgUrl'],
+            success: function (res) {
+                console.log("result: onMenuShareQQ setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            fail: function (res) {
+                console.log("result: onMenuShareQQ setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: onMenuShareQQ setup cancel");
+                console.log(res);
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: share['title'],
+            desc: share['desc'],
+            // link: share['link'],
+            imgUrl: location.origin + share['imgUrl'],
+            success: function (res) {
+                console.log("result: onMenuShareWeibo setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            fail: function (res) {
+                console.log("result: onMenuShareWeibo setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: onMenuShareWeibo setup cancel");
+                console.log(res);
+            }
+        });
+
+        wx.onMenuShareQZone({
+            title: share['title'],
+            desc: share['desc'],
+            // link: share['link'],
+            imgUrl: location.origin + share['imgUrl'],
+            success: function (res) {
+                console.log("result: onMenuShareQZone setup success.");
+                console.log(res);
+                onShareClose(document.getElementById('share_guide'));
+            },
+            fail: function (res) {
+                console.log("result: onMenuShareQZone setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: onMenuShareQZone setup cancel");
+                console.log(res);
+            }
+        });
     });
 
     wx.error(function (res) {
