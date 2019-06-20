@@ -124,7 +124,7 @@ function getWxConfig() {
     console.log("getting wx config");
     console.log(location.href);
     console.log(encodeURIComponent(location.href));
-    $.get("../php/jssdk.php", {"url": location.href},
+    $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
         function(data){
             var result = data.split(' ');
             console.log(result.toString());
@@ -183,9 +183,17 @@ function setupWxShare() {
             // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
-                console.log("result: wxshare setup success.");
+                console.log("result: onMenuShareAppMessage setup success.");
                 console.log(res);
                 onShareClose(document.getElementById('share_guide'));
+            },
+            fail: function (res) {
+                console.log("result: onMenuShareAppMessage setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: onMenuShareAppMessage setup cancel");
+                console.log(res);
             }
         });
 
@@ -194,11 +202,19 @@ function setupWxShare() {
             // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
-                console.log("result: wxshare setup success.");
+                console.log("result: onMenuShareTimeline setup success.");
                 console.log(res);
                 onShareClose(document.getElementById('share_guide'));
             },
-        });
+            fail: function (res) {
+                console.log("result: onMenuShareTimeline setup fail.");
+                console.log(res);
+            },
+            cancel: function (res) {
+                console.log("result: onMenuShareTimeline setup cancel");
+                console.log(res);
+            }
+        })
 
     });
 
