@@ -63,13 +63,13 @@
             context.msImageSmoothingEnabled = false;
             context.imageSmoothingEnabled = false;
 
-            console.log(canvas.toDataURL());
-            shortcut_img.setAttribute("src", canvas.toDataURL());
+            shortcut_img.setAttribute("src", canvas.toDataURL('image/png'));
             document.getElementById("shortcut_img").appendChild(shortcut_img);
         }).finally(function () {
             document.getElementById("shortcut_area").style.display = "none";
         });
     }
+
     console.log(window.location["href"]);
     var name = getUrlParam("name");
     var user_answer = getUrlParam("user_answer");
