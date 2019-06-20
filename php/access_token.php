@@ -1,1 +1,2 @@
-<?php exit();?>{"access_token":"","expire_time":0}
+<?php exit();?>
+{"access_token":"","expire_time":0}
