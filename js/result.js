@@ -123,8 +123,7 @@ function onShareClose(obj) {
 function getWxConfig() {
     console.log("getting wx config");
     console.log(location.origin);
-    console.log(encodeURIComponent(location.href));
-    $.get("../php/jssdk.php", {"url": location.href},
+    $.get("../php/jssdk.php", {"url": location.href.split('#')[0]},
         function(data){
             var result = data.split(' ');
             console.log(result);
