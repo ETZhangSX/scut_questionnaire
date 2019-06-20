@@ -55,6 +55,7 @@
             var shortcut_img = document.createElement("img");
             shortcut_img.style.setProperty("z-index", "20");
             shortcut_img.style.setProperty("max-width", "100%");
+            shortcut_img.style.setProperty("-webkit-touch-callout", "all");
 
             const context = canvas.getContext('2d');
             // 【重要】关闭抗锯齿 https://segmentfault.com/a/1190000011478657
