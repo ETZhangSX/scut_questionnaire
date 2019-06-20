@@ -77,16 +77,16 @@ function setupWxShare() {
             // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
-                console.log("detail: wxshare setup success.");
+                console.log("detail: onMenuShareAppMessage setup success.");
                 console.log(res);
                 onShareClose(document.getElementById('share_guide'));
             },
             fail: function (res) {
-                console.log("detail: wxshare setup fail.");
+                console.log("detail: onMenuShareAppMessage setup fail.");
                 console.log(res);
             },
             cancel: function (res) {
-                console.log("detail: wxshare setup cancel");
+                console.log("detail: onMenuShareAppMessage setup cancel");
                 console.log(res);
             }
         });
@@ -96,16 +96,16 @@ function setupWxShare() {
             // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
             success: function (res) {
-                console.log("detail: wxshare setup success.");
+                console.log("detail: onMenuShareTimeline setup success.");
                 console.log(res);
                 onShareClose(document.getElementById('share_guide'));
             },
             fail: function (res) {
-                console.log("detail: wxshare setup fail.");
+                console.log("detail: onMenuShareTimeline setup fail.");
                 console.log(res);
             },
             cancel: function (res) {
-                console.log("detail: wxshare setup cancel");
+                console.log("detail: onMenuShareTimeline setup cancel");
                 console.log(res);
             }
         });
