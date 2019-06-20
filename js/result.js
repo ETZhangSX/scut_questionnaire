@@ -122,12 +122,12 @@ function onShareClose(obj) {
 
 function getWxConfig() {
     console.log("getting wx config");
-    console.log(location.origin);
+    console.log(location.href);
     console.log(encodeURIComponent(location.href));
     $.get("../php/jssdk.php", {"url": location.href},
         function(data){
             var result = data.split(' ');
-            console.log(result);
+            console.log(result.toString());
             appid = result[0];
             console.log(appid);
             timestamp = result[1];
@@ -177,7 +177,7 @@ function setupWxShare() {
             }
         });
 
-        wx.updateAppMessageShareData({
+        wx.onMenuShareAppMessage({
             title: share['title'],
             desc: share['desc'],
             // link: share['link'],
@@ -189,7 +189,7 @@ function setupWxShare() {
             }
         });
 
-        wx.updateTimelineShareData({
+        wx.onMenuShareTimeline({
             title: share['title'],
             // link: share['link'],
             imgUrl: location.origin + share['imgUrl'],
