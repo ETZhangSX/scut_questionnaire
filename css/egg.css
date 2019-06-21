@@ -30,13 +30,18 @@ body {
 }
 
 
-#index_title img {
+.index_title img {
     display: block;
     width: 100%;
     bottom: 0;
-    /*max-height: 178vw;*/
     position: fixed;
     pointer-events: none;
+}
+
+#qrcode {
+    right: 5%;
+    bottom: 3.5vw;
+    width: 17%;
 }
 
 #logo {
@@ -54,10 +59,4 @@ body {
     bottom: -11vw;
 }
 
-#index_title {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-}
+
