@@ -16,7 +16,7 @@
     <script src="../node_modules/html2canvas/dist/html2canvas.min.js"></script>
 </head>
 <body>
-<div id="background_border"></div>
+<div id="background_border" style="z-index: 0;"></div>
 <div id="shortcut_area">
     <div class="background_img">
         <h4 id="user_name" style="z-index: 2">
@@ -37,7 +37,7 @@
     <div class="result" id="result_img"></div>
 </div>
 
-<div id="shortcut_img"></div>
+<div id="shortcut_img" style="position: fixed; z-index: 2;"></div>
 <!--<script type="module">-->
 <!--    import html2canvas from "html2canvas";-->
 
