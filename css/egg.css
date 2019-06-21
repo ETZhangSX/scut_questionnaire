@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: 100% 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+    --widthRatio: 90%;
+    --leftShift: 5%;
+}
+
+#background_border {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    bottom: 0;
+    left: 0;
+    border: 3vw solid #ddd;
+    border-image: -webkit-linear-gradient(#09357e, #e586a5) 20 20;
+
+    border-image: -moz-linear-gradient(#09357e, #e586a5) 20 20;
+
+    border-image: -o-linear-gradient(#09357e, #e586a5) 20 20;
+
+    border-image: linear-gradient(#09357e, #e586a5) 20 20;
+
+
+    display: block;
+    position: fixed;
+    z-index: 0;
+}
+
+
+#index_title img {
+    display: block;
+    width: 100%;
+    bottom: 0;
+    /*max-height: 178vw;*/
+    position: fixed;
+    pointer-events: none;
+}
+
+#logo {
+    left: -26%;
+    bottom: -5vw;
+}
+
+#img_egg_short img{
+    bottom: -15vw;
+}
+
+#img_egg_short_iphone img {
+    left: var(--leftShift);
+    max-width: var(--widthRatio);
+    bottom: -11vw;
+}
+
+#index_title {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}

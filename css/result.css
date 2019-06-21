@@ -46,6 +46,30 @@ body {
     pointer-events: none;
 }
 
+.egg_button {
+    width: 29px;
+    height: 33px;
+    background-color: transparent;
+    border: none;
+    background-image: url('../resource/egg/egg_tips.png');
+    position: fixed;
+    bottom: 129vw;
+    left: 3%;
+}
+
+#egg_btn {
+
+}
+
+#egg_btn_short {
+    top: 37vw;
+}
+
+#egg_btn_short_iphone {
+    top: 33vw;
+    left: calc(var(--leftShift) + 3%);
+}
+
 #school_btn {
     display: block;
     position: absolute;

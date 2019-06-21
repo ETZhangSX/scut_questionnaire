@@ -13,35 +13,68 @@
     <script src="../js/list.js"></script>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../node_modules/html2canvas/dist/html2canvas.min.js"></script>
 </head>
 <body>
 
-<div class="swiper-container">
+<div id="background_border">
 </div>
 
-<div id="background_border"></div>
-<div class="background_img">
-    <h4 id="user_name" style="z-index: 2">
-        您的名字
-    </h4>
-    <button class="detail_button" id="school_btn" onclick="window.location.href='detail.html'"></button>
-    <img src="../resource/result/bg_1.png?randomstring" alt="#" id="bg_title" crossorigin="anonymous">
-    <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0" crossorigin="anonymous">
-    <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo" crossorigin="anonymous">
-    <img src="../resource/result/bg_2.png" alt="#" id="bg_background" crossorigin="anonymous">
-    <img src="../resource/others/qrcode_text.png" alt="#" crossorigin="anonymous">
-    <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode" crossorigin="anonymous">
-    <button class="share" id="share_btn" onclick="onShareImg()" style="z-index: 4">点击分享</button>
-    <div id="share_bg" style="z-index: 5"></div>
-    <img id="share_guide" src="../resource/others/share_tip.png" onclick="onShareClose(this)" alt="#" style="z-index: 6">
+<div id="shortcut_area">
+    <div class="background_img">
+        <h4 id="user_name" style="z-index: 2">
+            您的名字
+        </h4>
+        <button class="detail_button" id="school_btn" onclick="window.location.href='detail.html'"></button>
+        <img src="../resource/result/bg_1.png?randomstring" alt="#" id="bg_title" crossorigin="anonymous">
+        <img src="../resource/others/bg_door.png" alt="#" style="z-index: 0" crossorigin="anonymous">
+        <img src="../resource/others/bg_scut.png" alt="#" style="z-index: 0" id="logo" crossorigin="anonymous">
+        <img src="../resource/result/bg_2.png" alt="#" id="bg_background" crossorigin="anonymous">
+        <img src="../resource/others/qrcode_text.png" alt="#" crossorigin="anonymous">
+        <img src="../resource/others/qrcode.jpg" alt="#" id="qrcode" crossorigin="anonymous">
+        <button class="share" id="share_btn" onclick="onShareTest()" style="z-index: 4">点击分享</button>
+        <div id="share_bg" style="z-index: 5"></div>
+        <img id="share_guide" src="../resource/others/share_tip.png" onclick="onShareClose(this)" alt="#" style="z-index: 6">
+    </div>
+
+    <div class="result" id="result_img"></div>
 </div>
 
-<div class="result" id="result_img"></div>
+
+<div id="shortcut_img" style="position: fixed; z-index: 2;"></div>
+
 <!--<script type="module">-->
 <!--    import html2canvas from "html2canvas";-->
 
 <!--</script>-->
 <script>
+    function onShareTest() {
+        const scale = 2;
+        html2canvas(document.getElementById("shortcut_area"), {
+            scale,
+            useCORS : true,
+            allowTaint: true,
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight
+        }).then(canvas => {
+            var shortcut_img = document.createElement("img");
+            shortcut_img.style.setProperty("z-index", "20");
+            shortcut_img.style.setProperty("max-width", "100%");
+
+            const context = canvas.getContext('2d');
+            // 【重要】关闭抗锯齿 https://segmentfault.com/a/1190000011478657
+            context.mozImageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.msImageSmoothingEnabled = false;
+            context.imageSmoothingEnabled = false;
+
+            shortcut_img.setAttribute("src", canvas.toDataURL('image/png'));
+            document.getElementById("shortcut_img").appendChild(shortcut_img);
+        }).finally(function () {
+            document.getElementById("shortcut_area").style.display = "none";
+        });
+    }
+
     console.log(window.location["href"]);
     var name = getUrlParam("name");
     var user_answer = getUrlParam("user_answer");
