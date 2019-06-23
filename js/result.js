@@ -56,6 +56,15 @@ function getResultRelation() {
     return JSON.parse(fp);
 }
 
+// 创建彩蛋按钮
+function createEggBtn(id) {
+    var egg_btn = document.createElement("button");
+    egg_btn.setAttribute("onclick","window.location.href='egg.html'");
+    egg_btn.className = "egg_button";
+    egg_btn.id = id;
+    document.body.appendChild(egg_btn);
+}
+
 
 // 从问卷传参加载结果
 function loadResultInfo(userName, schoolName, personalityName_1, personalityName_2) {
@@ -78,13 +87,14 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
     if (!isLongScreen) {
         if (u.indexOf("iPhone") > -1) {
             school.className = "school_short_iphone";
-            // document.getElementById("user_name").style.top = "6vw";
+
             document.getElementById("user_name").id = "user_name_iphone";
             document.getElementById("bg_title").id = "bg_title_iphone";//.style.top = "-15vw";
             document.getElementById("bg_background").id = "bg_background_iphone";//.style.bottom = "-11.5vw";
             document.getElementById("school_btn").style.bottom = "103vw";
             personality_1.id = "personality_short_iphone_1";
             personality_2.id = "personality_short_iphone_2";
+            createEggBtn("egg_btn_short_iphone");
         }
         else {
             school.className = "school_short";
@@ -94,11 +104,14 @@ function loadResultInfo(userName, schoolName, personalityName_1, personalityName
             document.getElementById("school_btn").style.bottom = "112vw";
             personality_1.id = "personality_short_1";
             personality_2.id = "personality_short_2";
+            createEggBtn("egg_btn_short");
         }
 
-    } else {
+    }
+    else {
         personality_1.id = "personality_1";
         personality_2.id = "personality_2";
+        createEggBtn("egg_btn");
     }
 
     school.id = "school";
